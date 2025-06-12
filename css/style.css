@@ -8751,3 +8751,86 @@ border-radius: 5px; }
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+/* =======================================================
+   Anirudh's Custom Climate Science Palette Overrides
+   ======================================================= */
+
+/* --- Main Body and Background --- */
+body {
+  background-color: #EAF6FF; /* Airy light blue background */
+  color: #2F3E46; /* Dark charcoal text for readability */
+}
+
+/* --- General Links --- */
+a {
+  color: #3A86FF; /* Vibrant primary blue for all links */
+}
+a:hover {
+  color: #2F3E46; /* Darken on hover */
+}
+
+/* --- Headings --- */
+h1, h2, h3, h4, h5, h6 {
+  color: #2F3E46; /* Consistent dark heading color */
+}
+
+/* --- Navigation Menu --- */
+#colorlib-main-nav {
+  background: #2F3E46; /* Dark background for the slide-out menu */
+}
+#colorlib-main-nav ul li a, 
+#colorlib-main-nav ul li a span {
+  color: #FFFFFF; /* White text on the dark menu */
+}
+#colorlib-main-nav ul li.active a span,
+#colorlib-main-nav ul li a:hover span {
+  color: #3A86FF; /* Primary blue for active/hover link */
+}
+.menu-show .colorlib-nav-toggle i::before, 
+.menu-show .colorlib-nav-toggle i::after {
+    background: #FFFFFF; /* Make the 'X' icon white on the dark menu */
+}
+
+/* --- Hero Section --- */
+.hero-title {
+  color: #2F3E46 !important; /* Force the main name to be dark */
+}
+.hero-subtitle {
+  color: #555; /* A softer gray for the subtitle */
+}
+
+/* --- About Section --- */
+.about-section .bold-text {
+  color: rgba(58, 134, 255, 0.08) !important; /* A faint version of our new blue */
+}
+.ftco-section.about-section {
+  background: #FFFFFF; /* White background for clean separation */
+}
+
+/* --- Competencies (formerly Services) Section --- */
+.services .icon span {
+  color: #3A86FF; /* Vibrant blue for icons */
+}
+.services .media-body .heading {
+  color: #2F3E46; /* Dark heading for each competency */
+}
+
+/* --- Footer --- */
+.stellar-footer {
+  background: #2F3E46; /* Dark footer to match the nav menu */
+  color: rgba(255, 255, 255, 0.7); /* Light gray text for footer */
+}
+.footer-section h2 {
+  color: #FFFFFF; /* White headings in the footer */
+}
+.footer-section .d p, .footer-section .d a {
+  color: rgba(255, 255, 255, 0.7);
+}
+.footer-section.social a {
+    color: #FFFFFF;
+}
+.footer-bottom {
+  color: rgba(255, 255, 255, 0.5);
+}
