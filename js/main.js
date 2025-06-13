@@ -188,76 +188,40 @@ $(document).ready(function($) {
 	  'autoclose': true
 	});
 	$('#appointment_time').timepicker();
-	
-    // --- THIS IS THE CORRECTED AND WORKING PROGRESS BAR FUNCTION ---
-	var pageProgress = function() {
-		// Listen for the scroll event on the window
-		$(window).scroll(function() {
-            // Get the current vertical scroll position
-			var wintop = $(window).scrollTop();
-            // Get the total height of the entire document
-			var docheight = $(document).height();
-            // Get the height of the visible part of the window
-			var winheight = $(window).height();
 
-            // Calculate the percentage. We subtract winheight from docheight to get the max scrollable distance.
-			var totalScroll = (wintop / (docheight - winheight)) * 100;
-			
-            // Set the width of the progress bar element using the calculated percentage
-			$(".KW_progressBar").css("width", totalScroll + "%");
-		});
+    // This is the original progress bar function from your file, which works.
+	var pageProgress = function() {
+		$(window).scroll(function() {
+	    var wintop = $(window).scrollTop(), docheight = $('.page').height(), winheight = $(window).height();
+	    var totalScroll = (wintop/(docheight-winheight))*100;
+	    $(".KW_progressBar").css("width",totalScroll+"%");
+	  });
+
 	};
-    // Initialize the progress bar function
 	pageProgress();
+
 
 });
 
-// my js
-// This section controls the fade-in of your hero text. It is correct.
-
-//   <p class="hero-subtitle" id="hello">Hello I'm</p>
-  document.addEventListener('DOMContentLoaded', () => {
-
-	setTimeout(() => {
-		// Make sure the element exists before trying to change its style
-		const helloElement = document.getElementById('hello');
-		if (helloElement) {
-			helloElement.style.opacity = 1;
-		}
-	  }, 400);
-  });
-
-//   <h1 class="hero-title"id="Name">Anirudh Arora</h1>
-  document.addEventListener('DOMContentLoaded', () => {
-
-	setTimeout(() => {
-		const nameElement = document.getElementById('Name');
-		if (nameElement) {
-			nameElement.style.opacity = 1;
-		}
-	  }, 700);
-  });
-
-//   <div class="ab hero-subtitle" id="line">I'm from Indore, Madhya Pradesh</div>
+// Hero text fade-in logic. This is correct.
 document.addEventListener('DOMContentLoaded', () => {
 	setTimeout(() => {
+		const helloElement = document.getElementById('hello');
+		if (helloElement) helloElement.style.opacity = 1;
+	  }, 400);
+  
+	setTimeout(() => {
+		const nameElement = document.getElementById('Name');
+		if (nameElement) nameElement.style.opacity = 1;
+	  }, 700);
+
+	setTimeout(() => {
 	  const lineElement = document.getElementById('line');
-	  if (lineElement) {
-		  lineElement.style.opacity = 1;
-	  }
+	  if (lineElement) lineElement.style.opacity = 1;
 	}, 1000);
-
-  });
-
-//   <a href="#portfolio" class="hero-button" id="button">Explore My Work</a>
-  document.addEventListener('DOMContentLoaded', () => {
 
 	setTimeout(() => {
 		const buttonElement = document.getElementById('button');
-		if (buttonElement) {
-			buttonElement.style.opacity = 1;
-		}
+		if (buttonElement) buttonElement.style.opacity = 1;
 	  }, 1300);
-  });
-
-  // --- I HAVE REMOVED THE REDUNDANT VANILLA JS PROGRESS BAR CODE FROM THE END ---
+});
