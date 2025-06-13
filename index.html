@@ -62,7 +62,9 @@
         </header>
   
         <section class="hero">
-          <!-- --- REMOVED --- The entire SVG blob div that was here is now gone. -->
+          <!-- This div is for the particle animation background -->
+          <div id="particles-js"></div>
+
           <div class="hero-overlay"></div>
           <div class="hero-content">
             <p class="hero-subtitle" id="hello">Hello, I'm</p>
@@ -71,11 +73,10 @@
           </div>
         </section>
         
-        <!-- --- MODIFIED --- Added the "floating-panel" class to the container -->
         <section class="ftco-section about-section">
             <div class="container">
               <div class="row d-flex" data-scrollax-parent="true">
-                <div class="col-md-4 author-img" style="background-image: url(images/Myanni.png);" data-scrollax=" properties: { translateY: '-70%'}"></div>
+                <div class="col-md-4 author-img" style="background-image: url(images/Myanni.png);"></div>
                 <div class="col-md-2"></div>
                 <div class="col-md-6 wrap ftco-animate">
                   <div class="about-desc">
@@ -92,7 +93,6 @@
             </div>
         </section>
 
-        <!-- --- MODIFIED --- Added the "floating-panel" class to the container -->
         <section class="ftco-section" id="research-focus">
             <div class="container floating-panel">
               <div class="row justify-content-center mb-5 pb-5">
@@ -134,7 +134,6 @@
         </section>
       </div>
 
-      <!-- --- MODIFIED --- The footer will now be styled as a floating panel via CSS -->
       <footer class="stellar-footer">
           <div class="footer-content container">
             <div class="footer-section links">
@@ -182,6 +181,13 @@
     <script src="js/scrollax.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
+    
+    <!-- tsParticles library and your custom config file -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="js/hero.js"></script>
+
+    <!-- This should be last -->
     <script src="js/main.js"></script>
+
   </body>
 </html>
