@@ -1,10 +1,8 @@
-// --- MODIFIED --- We now use the .then() method to get the container instance
-// This allows us to add custom click logic after the particles have loaded.
 tsParticles.load("particles-js", {
   fpsLimit: 60,
   particles: {
     number: {
-      value: 8, // --- CHANGED --- Reduced cloud count for a cleaner feel
+      value: 8, // Keeping the reduced cloud count
       density: {
         enable: true,
         value_area: 800,
@@ -16,16 +14,16 @@ tsParticles.load("particles-js", {
     shape: {
       type: "image",
       image: {
-        src: "images/cloud.svg",
+        src: "images/cloud.svg", // Using the new, better cloud shape
         width: 100,
-        height: 100,
+        height: 70, // Adjusted to match the new SVG's aspect ratio
       },
     },
     opacity: {
       value: { min: 0.2, max: 0.6 },
     },
     size: {
-      value: { min: 20, max: 50 },
+      value: { min: 30, max: 60 }, // Adjusted sizes for the new cloud shape
     },
     links: {
       enable: false,
@@ -41,51 +39,60 @@ tsParticles.load("particles-js", {
     },
   },
   interactivity: {
-    detect_on: "canvas",
     events: {
       onhover: {
         enable: false,
       },
       onclick: {
-        enable: true, // --- CHANGED --- Enable clicks
-        mode: "particle", // --- CHANGED --- Tell the library we want to handle particle-specific clicks
+        enable: true,
+        // --- CHANGED --- Using built-in modes is more reliable
+        mode: ["destroy", "emitters"], 
       },
       resize: true,
     },
-  },
-  detectRetina: true,
-}).then(container => {
-  // --- NEW --- This is our custom logic for the "burst" effect
-  // This function will be called every time a particle is clicked
-  container.particles.addClickHandler((event, particles) => {
-    if (particles.length > 0) {
-      const clickedParticle = particles[0];
-
-      // Configuration for the "burst" particles
-      const emitterOptions = {
+    modes: {
+      // This mode automatically destroys the clicked particle
+      destroy: {
+        mode: "split",
+        split: {
+          count: 1, // We will handle the burst with our emitter instead
+          particles: {
+            color: {
+              value: ["#5bc0eb", "#fde74c", "#9bc53d"], // Example split colors
+            },
+          },
+        },
+      },
+      // This mode defines the emitter that will fire on click
+      emitters: {
+        name: "burst",
         life: {
-          duration: 0.1, // Emitter lasts for a very short time
-          count: 1,      // Emits only once
+          duration: 0.1,
+          count: 1,
         },
+        // The emitter will be placed at the cursor's position
         position: {
-          x: clickedParticle.position.x,
-          y: clickedParticle.position.y,
+          x: 50,
+          y: 50,
         },
-        size: {
-          width: 0,
-          height: 0,
+        rate: {
+          quantity: 10, // Fire 10 particles in the burst
+          delay: 0.1,
         },
         particles: {
+          shape: {
+            type: "circle",
+          },
           size: {
-            value: { min: 1, max: 3 }, // The burst particles are tiny
+            value: { min: 1, max: 2 },
           },
           color: {
-            value: clickedParticle.getFillColor(), // Burst matches cloud color
+            value: "#0c081e", // Dark particles for contrast
           },
           move: {
-            speed: { min: 5, max: 10 }, // Move fast
-            direction: "outside",       // Explode outwards
-            decay: 0.05,                // Slow down quickly
+            speed: { min: 5, max: 10 },
+            direction: "outside",
+            decay: 0.05,
           },
           opacity: {
             value: { min: 0.3, max: 0.8 },
@@ -94,17 +101,12 @@ tsParticles.load("particles-js", {
               speed: 2,
               sync: false,
               startValue: "max",
-              destroy: "min", // Particles fade out and disappear
+              destroy: "min",
             },
           },
         },
-      };
-
-      // Create the burst
-      container.addEmitter(emitterOptions);
-      
-      // Destroy the original cloud
-      clickedParticle.destroy();
-    }
-  });
+      },
+    },
+  },
+  detectRetina: true,
 });
