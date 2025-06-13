@@ -19,7 +19,7 @@ body {
 #colorlib-page {
     position: relative;
     z-index: 2;
-    padding-bottom: 8em; /* Keeps space so content doesn't go under footer */
+    padding-bottom: 2em;
 }
 
 body:after, body:before {
@@ -104,52 +104,61 @@ body .KW_progressBar {
     box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
 
-/* --- NEW "HORIZON" FOOTER STYLES --- */
+/* --- NEW FOCAL POINT FOOTER STYLES --- */
 .site-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    padding: 2em 0;
-    background: transparent;
+    position: relative;
+    z-index: 2;
+    padding: 5em 0;
+    text-align: center;
+}
+.site-footer .footer-content {
+    max-width: 600px;
+    margin: 0 auto 3em auto;
+}
+.site-footer .footer-heading {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: #0c081e;
+}
+.site-footer .footer-email {
+    margin-bottom: 1.5em;
+}
+.site-footer .footer-email a {
+    font-size: 1.2em;
+    color: #0c081e;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.site-footer .footer-email a:hover {
+    color: #4A8BDF;
+    border-bottom-color: #4A8BDF;
 }
 .site-footer .footer-social {
-    text-align: center;
-    margin-bottom: 1.5em;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 .site-footer .footer-social a {
     color: #0c081e;
-    font-size: 1.5em; /* Slightly smaller for a more refined look */
-    margin: 0 15px;
+    font-size: 1.8em;
     transition: color 0.3s ease, transform 0.3s ease;
-    display: inline-block;
 }
 .site-footer .footer-social a:hover {
     color: #4A8BDF;
     transform: translateY(-3px);
 }
 .site-footer .footer-bottom {
-    text-align: center;
     font-size: 0.9em;
-    color: rgba(12, 8, 30, 0.5);
+    color: rgba(12, 8, 30, 0.6);
     border-top: 1px solid rgba(12, 8, 30, 0.1);
-    padding-top: 1.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
+    padding-top: 2em;
 }
-.site-footer .footer-bottom p,
-.site-footer .footer-bottom a {
+.site-footer .footer-bottom p {
     margin: 0;
-    color: rgba(12, 8, 30, 0.5);
-    text-decoration: none;
-    transition: color 0.3s ease;
 }
-.site-footer .footer-bottom a:hover {
-    color: #4A8BDF;
-}
+
 
 /* --- Desktop Navigation Bar --- */
 .desktop-header {
