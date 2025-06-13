@@ -188,30 +188,42 @@ $(document).ready(function($) {
 	  'autoclose': true
 	});
 	$('#appointment_time').timepicker();
-
+	
+    // --- THIS IS THE CORRECTED AND WORKING PROGRESS BAR FUNCTION ---
 	var pageProgress = function() {
+		// Listen for the scroll event on the window
 		$(window).scroll(function() {
-	    var wintop = $(window).scrollTop(), docheight = $('.page').height(), winheight = $(window).height();
-	    // console.log(wintop);
-	    var totalScroll = (wintop/(docheight-winheight))*100;
-	    // console.log("total scroll" + totalScroll);
-	    $(".KW_progressBar").css("width",totalScroll+"%");
-	  });
+            // Get the current vertical scroll position
+			var wintop = $(window).scrollTop();
+            // Get the total height of the entire document
+			var docheight = $(document).height();
+            // Get the height of the visible part of the window
+			var winheight = $(window).height();
 
+            // Calculate the percentage. We subtract winheight from docheight to get the max scrollable distance.
+			var totalScroll = (wintop / (docheight - winheight)) * 100;
+			
+            // Set the width of the progress bar element using the calculated percentage
+			$(".KW_progressBar").css("width", totalScroll + "%");
+		});
 	};
+    // Initialize the progress bar function
 	pageProgress();
-
 
 });
 
 // my js
-
+// This section controls the fade-in of your hero text. It is correct.
 
 //   <p class="hero-subtitle" id="hello">Hello I'm</p>
   document.addEventListener('DOMContentLoaded', () => {
 
 	setTimeout(() => {
-		document.getElementById('hello').style.opacity = 1;
+		// Make sure the element exists before trying to change its style
+		const helloElement = document.getElementById('hello');
+		if (helloElement) {
+			helloElement.style.opacity = 1;
+		}
 	  }, 400);
   });
 
@@ -219,14 +231,20 @@ $(document).ready(function($) {
   document.addEventListener('DOMContentLoaded', () => {
 
 	setTimeout(() => {
-		document.getElementById('Name').style.opacity = 1;
+		const nameElement = document.getElementById('Name');
+		if (nameElement) {
+			nameElement.style.opacity = 1;
+		}
 	  }, 700);
   });
 
 //   <div class="ab hero-subtitle" id="line">I'm from Indore, Madhya Pradesh</div>
 document.addEventListener('DOMContentLoaded', () => {
 	setTimeout(() => {
-	  document.getElementById('line').style.opacity = 1;
+	  const lineElement = document.getElementById('line');
+	  if (lineElement) {
+		  lineElement.style.opacity = 1;
+	  }
 	}, 1000);
 
   });
@@ -235,43 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', () => {
 
 	setTimeout(() => {
-		document.getElementById('button').style.opacity = 1;
+		const buttonElement = document.getElementById('button');
+		if (buttonElement) {
+			buttonElement.style.opacity = 1;
+		}
 	  }, 1300);
   });
 
-
-// --- Scroll Progress Bar Logic ---
-// This code should be added at the end of your js/main.js file
-
-(function() {
-    // 1. Select the progress bar element from the HTML
-    const progressBar = document.querySelector('.KW_progressBar');
-
-    // 2. Check if the element actually exists on the page
-    if (!progressBar) {
-        return; // If not, do nothing
-    }
-
-    // 3. Create the function to update the bar's width
-    const updateProgressBar = () => {
-        // Get the total height of the page
-        const scrollHeight = document.documentElement.scrollHeight;
-        // Get the height of the visible window
-        const clientHeight = document.documentElement.clientHeight;
-        // Get the current vertical scroll position
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-
-        // Calculate the percentage of the page that has been scrolled
-        // We subtract clientHeight from scrollHeight to get the maximum scrollable distance
-        const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-
-        // 4. Set the width of the progress bar to the calculated percentage
-        progressBar.style.width = scrollPercentage + '%';
-    };
-
-    // 5. Add an event listener to the window
-    // This will call our updateProgressBar function every time the user scrolls
-    window.addEventListener('scroll', updateProgressBar);
-})();
-
-  
+  // --- I HAVE REMOVED THE REDUNDANT VANILLA JS PROGRESS BAR CODE FROM THE END ---
