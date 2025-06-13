@@ -141,9 +141,8 @@ body.menu-show {
     border-radius: 12px;
     background-size: cover;
     background-position: center;
-    min-height: 350px; /* Ensure it has a minimum height */
-    /* The following line is new and important */
-    align-self: flex-start; /* Aligns the image to the top of the flex container */
+    min-height: 4000px; /* Ensure it has a minimum height */
+
 }
 }
 
