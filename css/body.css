@@ -74,7 +74,7 @@ body .KW_progressBar {
   height: 100%;
   z-index: 99;
   max-width: 100%;
-  background-color:#A0006D;
+  background: linear-gradient(to right, #3A86FF 0%, #E63946 100%);
   -webkit-transition: width .6s ease;
   transition: width .6s ease; 
 }
