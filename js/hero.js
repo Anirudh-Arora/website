@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   tsParticles.load("particles-js", {
-    // This is the base configuration for the clouds
     fpsLimit: 60,
     particles: {
       number: {
@@ -36,66 +35,56 @@ document.addEventListener("DOMContentLoaded", () => {
         bounce: false,
       },
     },
-    // This section tells the library to listen for clicks on the particles
-    interactivity: {
-      events: {
-        onclick: {
-          enable: true,
-          mode: "repulse", // A placeholder mode to ensure clicks are registered
-        },
-      },
-      modes: {
-        repulse: { // This configuration is not used, just needed to enable the mode
-            distance: 200,
-            duration: 0.4,
-        }
-      }
-    },
+    // --- THIS IS THE KEY FIX ---
+    // The entire interactivity block has been removed from the initial config.
+    // We will handle all interactivity manually in the '.then()' block below.
     detectRetina: true,
-  })
-  .then(container => {
-    // This is the direct, manual control part that will work reliably.
-    // It adds a listener that fires *only* when a particle is clicked.
+
+  }).then(container => {
+    // This adds a listener that fires *only* when a particle (a cloud) is clicked.
+    // This is the clean and direct way to handle this custom interaction.
     container.addParticleClickListener((event, particle) => {
+      
+      // Ensure a particle was actually clicked
       if (!particle) {
         return;
       }
 
-      // 1. Define the "burst" emitter
+      // 1. Define the properties of our "burst" emitter
       const emitterOptions = {
         life: {
-          duration: 0.1,
-          count: 1,
+          duration: 0.1, // Emitter itself is instantaneous
+          count: 1,      // It fires only once
         },
-        position: particle.getPosition(), // Use the exact cloud position
+        position: particle.getPosition(), // Use the exact coordinates of the clicked cloud
         particles: {
-          // Properties of the small burst particles
+          // These are the properties for the small particles in the burst
           color: {
-            value: "#0c081e",
+            value: "#0c081e", // Dark color for contrast
           },
           size: {
-            value: { min: 1, max: 3 },
-          },
-          move: {
-            speed: { min: 5, max: 10 },
-            direction: "outside",
-            decay: 0.1,
+            value: { min: 1, max: 2 },
           },
           opacity: {
-            value: { min: 0.1, max: 0.5 },
-            animation: {
+            value: { min: 0.4, max: 0.8 },
+            animation: { // This makes them fade out
               enable: true,
-              speed: 5,
+              speed: 4,
               destroy: "min",
             },
+          },
+          move: {
+            speed: { min: 5, max: 10 }, // They move fast
+            direction: "outside",       // They explode outwards
+            decay: 0.1,                 // They slow down as they travel
           },
         },
       };
 
-      // 2. Add the emitter to create the burst
+      // 2. Add the emitter to the scene to create the burst
       container.addEmitter(emitterOptions);
 
-      // 3. Destroy the original cloud
+      // 3. Immediately destroy the original cloud that was clicked
       particle.destroy();
     });
   });
