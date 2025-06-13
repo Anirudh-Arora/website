@@ -9006,3 +9006,26 @@ footer.stellar-footer {
 .stellar-footer .footer-section.social ul li a:hover i {
     color: #FFFFFF;
 }
+
+
+/* ===================================================================
+   Final Image Aspect Ratio & Alignment Fix
+   =================================================================== */
+
+/* --- Fix #1: Navigation Menu Background Image --- */
+/* This forces the background to cover the area without stretching. */
+#colorlib-main-nav .colorlib-table .img {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* --- Fix #2: About Section Author Image --- */
+/* This ensures the image fills its column correctly without distortion. */
+.author-img {
+    background-size: cover !important;
+    background-position: center center !important;
+    min-height: 450px; /* Ensures a good minimum height on all screen sizes */
+    -ms-flex-item-align: stretch !important; /* IE fallback */
+    align-self: stretch !important; /* This tells the image column to match the text column's height */
+}
