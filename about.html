@@ -56,7 +56,6 @@
 		  </nav>
     
     <div id="colorlib-page">
-        <!-- --- NEW DESKTOP-FRIENDLY HEADER --- -->
         <header class="desktop-header">
             <div class="container">
                 <div class="header-content">
@@ -75,13 +74,11 @@
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </nav>
-                    <!-- This is the burger menu toggle for mobile -->
                     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle mobile-toggle"><i></i></a>
                 </div>
             </div>
         </header>
 
-        <!-- The old header is hidden on desktop by CSS -->
         <header class="mobile-header">
             <div class="container">
                 <div class="row">
@@ -94,14 +91,25 @@
             </div>
         </header>
 
-      <!-- Parallax shapes for this page -->
+      <!-- --- NEW --- Added the Hero section for consistency -->
+      <section class="hero">
+        <div id="particles-js"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="hero-subtitle" id="hello">Hello, I'm</p>
+          <h1 class="hero-title"id="Name">Anirudh Arora</h1>
+          <div class="ab hero-subtitle" id="line">Climate Researcher & Environmental Science Student</div>
+        </div>
+      </section>
+
+      <!-- Parallax shapes for the main content -->
       <div class="background-shape shape-1" data-scrollax="properties: { 'translateY': '-20%', 'opacity': 1 }"></div>
       <div class="background-shape shape-2" data-scrollax="properties: { 'translateY': '-30%', 'opacity': 1 }"></div>
 
       <section class="ftco-section about-section">
         <div class="container">
           <!-- TOP SECTION: IMAGE AND SUMMARY -->
-          <div class="row d-flex" style="padding-top: 5em;" data-scrollax-parent="true">
+          <div class="row d-flex" data-scrollax-parent="true">
             <div class="col-md-4 author-img" style="background-image: url(images/Myanni.png);"></div>
             <div class="col-md-2"></div>
             <div class="col-md-6 wrap ftco-animate">
@@ -110,7 +118,6 @@
                 <div class="p-5">
                   <h2 class="mb-5">Anirudh Arora</h2>
                   <p>A final-year Environmental Science major with a focus on atmospheric sciences, climate modeling, and the socio-political dimensions of climate action. Proven experience in analyzing GCM outputs and developing decision-making frameworks for climate policy.</p>
-                  <!-- Replace "path/to/your/CV.pdf" with the actual path to your file -->
                   <p><a href="path/to/your/CV.pdf" class="cv-button" download>Download Full CV (PDF)</a></p>
                 </div>
               </div>
@@ -233,6 +240,11 @@
     <script src="js/scrollax.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
+    
+    <!-- tsParticles and hero config are needed here too -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+    <script src="js/hero.js"></script>
+    
     <script src="js/main.js"></script>
     
   </body>
