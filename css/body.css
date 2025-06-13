@@ -1,44 +1,52 @@
+/* --- MODIFIED --- Body styles for the new design */
 body {
     font-family: "Poppins", Arial, sans-serif;
-    background:#c3ced2; 
+    /* --- NEW --- A nice airy blue gradient for the background */
+    background: linear-gradient(135deg, #a8d0e6 0%, #e0f7fa 100%);
     font-size: 18px;
     line-height: 1.8;
     font-weight: 400;
-    color:#0c081e;
+    color: #0c081e;
     overflow-x: hidden;
-    position: relative; 
+    position: relative;
+    background-attachment: fixed; /* --- NEW --- Keeps the gradient fixed during scroll */
 }
 
-.page{
-  background-color:#c3ced2;
+/* --- MODIFIED --- Let the body gradient show through */
+.page {
+  background-color: transparent;
 }
 
+/* --- MODIFIED --- Re-purposed to be a soft, blurred background light source */
 body:after {
   position: fixed;
-  top: -150px;
-  right: -50px;
-  bottom: 0;
+  top: -10vh;
+  right: -20vw;
   content: '';
-  width: 400px;
-  height: 600px;
-  border: 2px solid rgba(255, 255, 255, 0.05);
+  width: 50vw;
+  height: 50vh;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
   z-index: -1;
-  -webkit-transform: rotate(-30deg);
-  transform: rotate(-30deg); 
+  transform: rotate(-30deg);
+  filter: blur(100px); /* --- NEW --- This creates the soft orb effect */
+  -webkit-filter: blur(100px);
 }
 
+/* --- MODIFIED --- Re-purposed to be another soft, blurred background light source */
 body:before {
   position: fixed;
-  top: 500px;
-  left: -100px;
-  bottom: 0;
+  top: 50vh;
+  left: -20vw;
   content: '';
-  width: 400px;
-  height: 400px;
-  border: 2px solid rgba(255, 255, 255, 0.05);
+  width: 45vw;
+  height: 45vh;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
   z-index: -1;
-  -webkit-transform: rotate(20deg);
-  transform: rotate(20deg); 
+  transform: rotate(20deg);
+  filter: blur(90px); /* --- NEW --- This creates the soft orb effect */
+  -webkit-filter: blur(90px);
 }
 
 body.menu-show {
@@ -80,8 +88,8 @@ body .KW_progressBar {
 
 .ftco-animate i{
   display: flex;
-  justify-content: center;  /* Horizontally center */
-  align-items: center;      /* Vertically center */
+  justify-content: center;
+  align-items: center;
   height: 100%; 
   font-size: 150%;
 }
@@ -92,7 +100,8 @@ body .KW_progressBar {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  /* --- MODIFIED --- Changed text color for better contrast */
+  color: #0c081e;
   text-align: center;
 }
 
@@ -105,14 +114,15 @@ body .KW_progressBar {
 
 .hero-title {
   font-size: 3.5em;
+  font-weight: 700; /* --- NEW --- Made title bolder */
   margin-bottom: 0.5em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* --- REMOVED --- text-shadow is not needed on the light background */
 }
 
 .hero-subtitle {
   font-size: 1.5em;
   margin-bottom: 1em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* --- REMOVED --- text-shadow is not needed */
 }
 
 .hero-button {
@@ -196,56 +206,51 @@ body .KW_progressBar {
    }
 }
 
-/* blobs */
-.svg_2_blob {
-  position: absolute;
-  width: 44%;
-  height: 100%;
-  z-index: -1;
-  top: 14%;
+/* --- REMOVED --- The CSS for the old blobs is no longer needed. */
+/* .svg_2_blob { ... } */
+/* .svg_3_blob { ... } */
+/* Media queries for blobs are also removed. */
+
+
+/* --- NEW --- Floating Panel / Glassmorphism Style */
+.floating-panel {
+    background: rgba(255, 255, 255, 0.35); /* Semi-transparent white */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 15px; /* Softer corners */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15); /* The "floating" shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.svg_3_blob {
-  position: absolute;
-  width: 70%;
-  height: 100%;
-  z-index: -1 !important;
-  left: 50%;
+.floating-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .svg_2_blob {
-    width: 112%;
-    top: 100px !important; 
-  }
-
-  .svg_3_blob {
-    top: -200x;
-    left: 50%; 
-  }
-}
-
-@media (max-width: 480px) {
-  .svg_2_blob {
-    top: 40%; 
-  }
-
-  .svg_3_blob {
-    top: 35%;
-    left: 40%;
-  }
-}
-
-/* contact footer */
+/* --- MODIFIED --- Footer styles to match the floating panel design */
 .stellar-footer {
-  background:#c3ced2;
+  /* Using glassmorphism effect */
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  
   color:#181818;
-  padding: 50px 0;
+  padding: 40px 0;
   font-family: 'Arial', sans-serif;
   text-align: center;
-  box-shadow:10px 5px 5px 8px rgba(0, 0, 0, 0.251);
+  max-width: 1140px; /* To match container width */
+  margin: 4em auto; /* Center it and add space */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.stellar-footer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 .stellar-footer .footer-content {
   display: flex;
@@ -327,7 +332,8 @@ body .KW_progressBar {
 
 .stellar-footer .footer-bottom {
   margin-top: 30px;
-  border-top: 1px solid #030303;
+  /* --- MODIFIED --- Changed to a lighter border */
+  border-top: 1px solid rgba(0,0,0,0.1);
   padding-top: 20px;
 }
 
