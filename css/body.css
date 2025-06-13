@@ -2,6 +2,9 @@
 body {
     font-family: "Poppins", Arial, sans-serif;
     background: linear-gradient(135deg, #a8d0e6 0%, #e0f7fa 100%);
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
     color: #0c081e;
     overflow-x: hidden;
     position: relative;
@@ -10,11 +13,16 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.page {
+  background-color:transparent;
+}
+
 #colorlib-page {
     position: relative;
     z-index: 2;
     background: transparent;
 }
+
 #particles-js {
     position: fixed;
     width: 100%;
@@ -22,28 +30,127 @@ body {
     top: 0;
     left: 0;
     z-index: 0;
+    pointer-events: none;
+}
+
+
+body:after, body:before {
+  position: fixed;
+  content: '';
+  z-index: -1;
+  filter: blur(100px);
+  -webkit-filter: blur(100px);
+}
+body:after {
+  top: -10vh; right: -20vw; width: 50vw; height: 50vh;
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(-30deg);
+}
+body:before {
+  top: 50vh; left: -20vw; width: 45vw; height: 45vh;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(20deg);
+}
+
+body.menu-show {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%; 
 }
 
 /* --- Progress Bar --- */
 body .KW_progressContainer {
-  left: 0; width: 100%; height: 0.4em;
-  position: fixed; top: 0px; z-index: 999;
+  left: 0;
+  width: 100%;
+  height: 0.4em;
+  margin-bottom: 0px;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.2);
+  content: "";
+  display: table;
+  table-layout: fixed;
+  z-index: 999; 
 }
+
 body .KW_progressBar {
-  width: 0%; height: 100%;
+  width: 0%;
+  float: left;
+  height: 100%;
+  z-index: 99;
+  max-width: 100%;
   background: linear-gradient(to right, #3A86FF 0%, #E63946 100%);
-  transition: width .6s ease;
+  transition: width .6s ease; 
 }
 
 /* --- Header & Navigation --- */
 .desktop-header {
-    position: relative; 
-    z-index: 100; 
-    padding: 1.5em 0; 
+    position: relative; /* Changed from absolute */
+    z-index: 100;
+    padding: 1.5em 0;
     background: transparent;
 }
-/* ... other nav styles ... */
+.desktop-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.desktop-header .logo-container .colorlib-logo {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #0c081e;
+    font-weight: 400; 
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+.desktop-header .logo-container .logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-size: cover;
+    background-position: center;
+}
+.desktop-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+.desktop-nav li {
+    margin: 0 15px;
+}
+.desktop-nav a {
+    color: #0c081e;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+}
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4A8BDF;
+    transition: width 0.3s ease;
+}
+.desktop-nav a:hover::after,
+.desktop-nav li.active a::after {
+    width: 100%;
+}
+.mobile-header {
+    display: none;
+}
+.mobile-toggle {
+    display: none !important;
+}
+
 
 /* --- Homepage Hero Section --- */
 .hero {
@@ -53,18 +160,27 @@ body .KW_progressBar {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: -95px; 
+  margin-top: -95px; /* Pulls the hero up under the now-relative header */
 }
-.hero .hero-content {
-  position: relative; z-index: 2; 
-  max-width: 800px; padding: 20px;
+.hero-content {
+  position: relative;
+  z-index: 2; 
+  max-width: 800px;
+  padding: 20px;
 }
-.hero .hero-title { font-size: 3.5em; font-weight: 700; }
-.hero .hero-subtitle { font-size: 1.5em; }
+.hero-title {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+.hero-subtitle {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
 
-/* --- Internal Page Hero Section --- */
+/* --- Internal Page Headers (Projects, About, etc.) --- */
 .page-header-container {
-    padding: 4em 0;
+    padding: 4em 0; /* Adjusted padding for a cleaner look */
     text-align: center;
     position: relative;
     z-index: 2;
@@ -76,65 +192,101 @@ body .KW_progressBar {
 .page-header-container .project-detail-meta,
 .page-header-container .interest-text {
     font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.9em; letter-spacing: 0.1em; color: #555;
-    text-transform: uppercase; margin-top: 1em;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    color: #555;
+    text-transform: uppercase;
+    margin-top: 1em;
 }
 
-/* --- Content Sections --- */
+/* --- General Content Sections --- */
 .ftco-section {
     padding: 7em 0;
     position: relative;
     z-index: 2;
 }
-.pt-0 { padding-top: 0 !important; }
+.pt-0 {
+    padding-top: 0 !important;
+}
 
 /* --- Parallax Shapes --- */
 .background-shape {
-    position: absolute; width: 500px; height: 500px;
+    position: absolute;
+    width: 500px;
+    height: 500px;
     background-color: rgba(255, 255, 255, 0.25);
-    border-radius: 50%; z-index: -1; 
-    opacity: 0; filter: blur(60px); -webkit-filter: blur(60px);
+    border-radius: 50%;
+    z-index: 1; /* Sits behind content sections but above the fixed background */
+    opacity: 0;
+    filter: blur(60px);
+    -webkit-filter: blur(60px);
     pointer-events: none;
 }
-.shape-1 { top: 50vh; left: -250px; }
-.shape-2 { top: 120vh; right: -250px; width: 400px; height: 400px; }
+.shape-1 {
+    top: 50vh; 
+    left: -250px;
+}
+.shape-2 {
+    top: 120vh; /* Adjusted position */
+    right: -250px;
+    width: 400px;
+    height: 400px;
+}
 
-/* --- MODIFIED --- Project Cards Reverted to Non-Panel Style */
+/* --- Content-Specific Styles --- */
+.cv-button {
+  display: inline-block;
+  padding: 8px 20px;
+  color: #ffffff !important;
+  background-color:#4A8BDF;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.0em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.cv-button:hover {
+  background-color: #3A77CF;
+}
 .project-card {
-    margin-bottom: 3em;
-    background: transparent; /* No default background */
+    margin-bottom: 2em;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 1.5em;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    border: 1px solid transparent; /* Transparent border to prevent layout shift on hover */
-    box-shadow: none; /* No default shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(12, 8, 30, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .project-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.1);
+    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
-
 .project-card .project-img {
-    display: block; height: 220px; background-size: cover;
-    background-position: center; background-repeat: no-repeat;
-    margin-bottom: 1.5em; border-radius: 10px;
+    display: block;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5em;
+    border-radius: 10px;
 }
 .project-card .project-text { padding: 0; }
 .project-card .project-meta {
     font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.8em; color: #6c757d; text-transform: uppercase; letter-spacing: .05em;
+    font-size: 0.8em;
+    color: #6c757d;
+    text-transform: uppercase;
 }
 .project-card .project-title {
-    font-size: 1.5em; font-weight: 600; margin: 0.5em 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0.5em 0;
 }
 .project-card .project-title a {
-    text-decoration: none; color: #0c081e;
+    text-decoration: none;
+    color: #0c081e;
 }
-
-/* ... other content styles like .project-detail-wrap ... */
 .project-detail-wrap {
     padding: 2em 0;
 }
@@ -154,33 +306,63 @@ body .KW_progressBar {
 }
 
 
-/* --- Final Footer --- */
+/* --- Footer --- */
 .site-footer {
-    position: relative; z-index: 10;
-    padding: 4em 0; margin-top: 4em; text-align: center;
+    position: relative;
+    z-index: 10;
+    padding: 4em 0;
+    margin-top: 4em;
+    text-align: center;
     border-top: 1px solid rgba(12, 8, 30, 0.1);
 }
-.site-footer .footer-content { max-width: 600px; margin: 0 auto 3em auto; }
-.site-footer .footer-heading { font-size: 1.5em; font-weight: 600; margin-bottom: 0.5em; }
-.site-footer .footer-email { margin-bottom: 1.5em; }
-.site-footer .footer-email a {
-    font-size: 1.2em; color: #0c081e; text-decoration: none;
-    border-bottom: 2px solid transparent; transition: all 0.3s ease;
+.site-footer .footer-content {
+    max-width: 600px;
+    margin: 0 auto 3em auto;
 }
-.site-footer .footer-email a:hover { color: #4A8BDF; border-bottom-color: #4A8BDF; }
-.site-footer .footer-social { display: flex; justify-content: center; gap: 30px; }
+.site-footer .footer-heading {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+.site-footer .footer-email {
+    margin-bottom: 1.5em;
+}
+.site-footer .footer-email a {
+    font-size: 1.2em;
+    color: #0c081e;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+.site-footer .footer-email a:hover {
+    color: #4A8BDF;
+    border-bottom-color: #4A8BDF;
+}
+.site-footer .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
 .site-footer .footer-social a {
-    color: #0c081e; font-size: 1.8em;
+    color: #0c081e;
+    font-size: 1.8em;
     transition: color 0.3s ease, transform 0.3s ease;
 }
-.site-footer .footer-social a:hover { color: #4A8BDF; transform: translateY(-3px); }
+.site-footer .footer-social a:hover {
+    color: #4A8BDF;
+    transform: translateY(-3px);
+}
 .site-footer .footer-bottom {
-    margin-top: 3em; font-size: 0.9em;
+    margin-top: 3em;
+    font-size: 0.9em;
     color: rgba(12, 8, 30, 0.6);
 }
-.site-footer .footer-bottom p { margin: 0; }
+.site-footer .footer-bottom p {
+    margin: 0;
+}
 
-/* Responsive adjustments */
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 991.98px) {
     .desktop-header {
         position: absolute;
