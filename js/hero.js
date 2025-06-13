@@ -1,109 +1,108 @@
-document.addEventListener("DOMContentLoaded", () => {
-  tsParticles.load("particles-js", {
-    fpsLimit: 60,
-    particles: {
-      number: {
-        value: 8,
-        density: {
-          enable: true,
-          value_area: 800,
-        },
+tsParticles.load("particles-js", {
+  fpsLimit: 60,
+  particles: {
+    number: {
+      value: 8,
+      density: {
+        enable: true,
+        value_area: 800,
       },
-      color: {
-        value: "#ffffff",
+    },
+    color: {
+      value: "#ffffff",
+    },
+    shape: {
+      type: "image",
+      image: {
+        src: "images/cloud.svg",
+        width: 100,
+        height: 70,
       },
-      shape: {
-        type: "image",
-        image: {
-          src: "images/cloud.svg",
-          width: 100,
-          height: 70,
-        },
-      },
-      opacity: {
-        value: { min: 0.2, max: 0.6 },
-      },
-      size: {
-        value: { min: 30, max: 60 },
-      },
-      links: {
+    },
+    opacity: {
+      value: { min: 0.2, max: 0.6 },
+    },
+    size: {
+      value: { min: 30, max: 60 },
+    },
+    links: {
+      enable: false,
+    },
+    move: {
+      enable: true,
+      speed: 0.5,
+      direction: "none",
+      random: true,
+      straight: false,
+      out_mode: "out",
+      bounce: false,
+    },
+  },
+  interactivity: {
+    events: {
+      onhover: {
         enable: false,
       },
-      move: {
+      onclick: {
         enable: true,
-        speed: 0.5,
-        direction: "none",
-        random: true,
-        straight: false,
-        out_mode: "out",
-        bounce: false,
+        // --- THIS IS THE KEY FIX ---
+        // We are enabling two modes at once: destroy the cloud, and trigger the emitter
+        mode: ["destroy", "emitters"],
       },
+      resize: true,
     },
-    interactivity: {
-      events: {
-        // --- THIS IS THE KEY ---
-        // We tell the library to listen for clicks on particles
-        onclick: {
-          enable: true,
-          mode: "trail", // Using a dummy mode to ensure click detection is active
-        },
-        resize: true,
-      },
-    },
-    detectRetina: true,
-
-  }).then(container => {
-    // --- THIS IS OUR CUSTOM LOGIC THAT WILL NOW WORK ---
-    // We add a listener that fires specifically when a particle is clicked
-    container.canvas.element.addEventListener("particleClicked", (event) => {
-      const { particle } = event.detail;
-
-      if (!particle) {
-        return;
-      }
+    modes: {
+      // This mode destroys the clicked particle
+      destroy: {},
       
-      // Configuration for the "burst" particles
-      const emitterOptions = {
+      // This mode defines the emitter that will be triggered on click
+      emitters: {
+        // Emitters will be placed at the cursor's position on click
         life: {
-          duration: 0.1, // Emitter lasts for a very short time
-          count: 1,      // Emits only once
+          duration: 0.2, // The emitter itself only lasts for a moment
+          count: 1,      // It only fires once per click
         },
-        // Place the emitter at the exact position of the clicked cloud
-        position: particle.getPosition(),
-        size: {
-          width: 0,
-          height: 0,
+        rate: {
+          quantity: 15,  // It creates 15 burst particles
+          delay: 0,
         },
         particles: {
+          // These are the properties of the "burst" particles
+          shape: {
+            type: "circle",
+          },
           size: {
-            value: { min: 1, max: 2 },
+            value: { min: 1, max: 3 },
           },
           color: {
-            value: "#0c081e", // Dark particles for good contrast
+            value: "#0c081e", // Dark particles for contrast
+          },
+          opacity: {
+            value: { min: 0.4, max: 0.8 },
+            animation: {
+              enable: true,
+              speed: 3,
+              sync: false,
+              startValue: "max",
+              destroy: "min", // Particles will fade out and disappear
+            },
           },
           move: {
             speed: { min: 5, max: 10 },
-            direction: "outside",
-            decay: 0.05,
-          },
-          opacity: {
-            value: { min: 0.3, max: 0.8 },
-            animation: {
-              enable: true,
-              speed: 2,
-              sync: false,
-              startValue: "max",
-              destroy: "min", // Particles fade out and disappear
+            direction: "outside", // Explode outwards from the center
+            gravity: {
+                enable: false
             },
+            trail: {
+                enable: false
+            },
+            outModes: {
+                default: "destroy"
+            }
           },
         },
-      };
-
-      // Create the burst emitter
-      container.addEmitter(emitterOptions);
-      
-      // Destroy the original cloud particle
-      particle.destroy();
-    });
-  });
+      },
+    },
+  },
+  detectRetina: true,
 });
