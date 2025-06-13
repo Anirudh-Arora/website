@@ -1,7 +1,6 @@
-/* --- MODIFIED --- Body styles for the new design */
+/* --- MODIFIED --- Added font-smoothing properties for better consistency */
 body {
     font-family: "Poppins", Arial, sans-serif;
-    /* --- NEW --- A nice airy blue gradient for the background */
     background: linear-gradient(135deg, #a8d0e6 0%, #e0f7fa 100%);
     font-size: 18px;
     line-height: 1.8;
@@ -9,7 +8,11 @@ body {
     color: #0c081e;
     overflow-x: hidden;
     position: relative;
-    background-attachment: fixed; /* --- NEW --- Keeps the gradient fixed during scroll */
+    background-attachment: fixed;
+    
+    /* --- NEW --- These properties improve font rendering consistency */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- MODIFIED --- Let the body gradient show through */
@@ -29,7 +32,7 @@ body:after {
   border: none;
   z-index: -1;
   transform: rotate(-30deg);
-  filter: blur(100px); /* --- NEW --- This creates the soft orb effect */
+  filter: blur(100px);
   -webkit-filter: blur(100px);
 }
 
@@ -45,7 +48,7 @@ body:before {
   border: none;
   z-index: -1;
   transform: rotate(20deg);
-  filter: blur(90px); /* --- NEW --- This creates the soft orb effect */
+  filter: blur(90px);
   -webkit-filter: blur(90px);
 }
 
@@ -100,7 +103,6 @@ body .KW_progressBar {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* --- MODIFIED --- Changed text color for better contrast */
   color: #0c081e;
   text-align: center;
 }
@@ -114,15 +116,13 @@ body .KW_progressBar {
 
 .hero-title {
   font-size: 3.5em;
-  font-weight: 700; /* --- NEW --- Made title bolder */
+  font-weight: 700;
   margin-bottom: 0.5em;
-  /* --- REMOVED --- text-shadow is not needed on the light background */
 }
 
 .hero-subtitle {
   font-size: 1.5em;
   margin-bottom: 1em;
-  /* --- REMOVED --- text-shadow is not needed */
 }
 
 .hero-button {
@@ -206,20 +206,16 @@ body .KW_progressBar {
    }
 }
 
-/* --- REMOVED --- The CSS for the old blobs is no longer needed. */
-/* .svg_2_blob { ... } */
-/* .svg_3_blob { ... } */
-/* Media queries for blobs are also removed. */
 
-
-/* --- NEW --- Floating Panel / Glassmorphism Style */
 .floating-panel {
-    background: rgba(255, 255, 255, 0.35); /* Semi-transparent white */
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.35); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: 15px; /* Softer corners */
+    border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15); /* The "floating" shadow */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -228,22 +224,19 @@ body .KW_progressBar {
     box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* --- MODIFIED --- Footer styles to match the floating panel design */
 .stellar-footer {
-  /* Using glassmorphism effect */
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-  
   color:#181818;
   padding: 40px 0;
   font-family: 'Arial', sans-serif;
   text-align: center;
-  max-width: 1140px; /* To match container width */
-  margin: 4em auto; /* Center it and add space */
+  max-width: 1140px; 
+  margin: 4em auto; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .stellar-footer:hover {
@@ -332,7 +325,6 @@ body .KW_progressBar {
 
 .stellar-footer .footer-bottom {
   margin-top: 30px;
-  /* --- MODIFIED --- Changed to a lighter border */
   border-top: 1px solid rgba(0,0,0,0.1);
   padding-top: 20px;
 }
