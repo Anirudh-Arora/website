@@ -1,3 +1,4 @@
+/* --- Global Body & Background Styles --- */
 body {
     font-family: "Poppins", Arial, sans-serif;
     background: linear-gradient(135deg, #a8d0e6 0%, #e0f7fa 100%);
@@ -19,6 +20,7 @@ body {
 #colorlib-page {
     position: relative;
     z-index: 2;
+    padding-bottom: 2em;
 }
 
 body:after, body:before {
@@ -50,20 +52,26 @@ body .KW_progressBar {
   transition: width .6s ease; 
 }
 
-.hero {
-  position: relative; height: 100vh;
-  display: flex; justify-content: center; align-items: center;
-  color: #0c081e; text-align: center; overflow: hidden; 
-}
-
+/* --- Particle Canvas --- */
 #particles-js {
-  position: fixed; width: 100%; height: 100%;
-  top: 0; left: 0; z-index: 0; pointer-events: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 .hero #particles-js {
     position: absolute;
 }
 
+/* --- Homepage Hero --- */
+.hero {
+  position: relative; height: 100vh;
+  display: flex; justify-content: center; align-items: center;
+  color: #0c081e; text-align: center; overflow: hidden; 
+}
 .hero-content {
   position: relative; z-index: 2; 
   max-width: 800px; padding: 20px;
@@ -71,6 +79,18 @@ body .KW_progressBar {
 .hero-title { font-size: 3.5em; font-weight: 700; margin-bottom: 0.5em; }
 .hero-subtitle { font-size: 1.5em; margin-bottom: 1em; }
 
+/* --- General Content Sections --- */
+.ftco-section {
+    padding: 7em 0;
+    position: relative;
+    z-index: 2;
+}
+.pt-0 { padding-top: 0 !important; }
+
+/* --- About Section Specifics --- */
+.about-section .author-img {
+    border-radius: 10px;
+}
 .cv-button {
   display: inline-block; padding: 5px 15px;
   color: #ffffff !important; background-color:#4A8BDF;
@@ -80,7 +100,8 @@ body .KW_progressBar {
 }
 .cv-button:hover { background-color: #3A77CF; }
 
-/* Parallax Shape Styles */
+
+/* --- Parallax Shapes --- */
 .background-shape {
     position: absolute; width: 500px; height: 500px;
     background-color: rgba(255, 255, 255, 0.25);
@@ -90,8 +111,6 @@ body .KW_progressBar {
 }
 .shape-1 { top: 50vh; left: -250px; }
 .shape-2 { top: 110vh; right: -250px; width: 400px; height: 400px; }
-.ftco-section { padding: 7em 0; position: relative; z-index: 2; }
-.pt-0 { padding-top: 0 !important; }
 
 #research-focus .media.block-6.services {
     background: transparent; border-radius: 15px;
@@ -103,17 +122,79 @@ body .KW_progressBar {
     box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
 
-/* --- NEW FOCAL POINT FOOTER STYLES --- */
+/* --- NEW --- STYLES FOR PROJECTS PAGE (RESTORED) --- */
+.project-header {
+    padding: 8em 0 4em 0;
+    text-align: center;
+}
+.project-header .interest-text {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+.project-header .project-title-main {
+    font-size: 3.5em;
+    font-weight: 700;
+}
+.project-card {
+    margin-bottom: 3em;
+    background: transparent;
+    border-radius: 15px;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+}
+.project-card .project-img {
+    display: block;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(12, 8, 30, 0.1);
+}
+.project-card .project-text {
+    padding: 0;
+}
+.project-card .project-meta {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8em;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+.project-card .project-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0.5em 0;
+}
+.project-card .project-title a {
+    text-decoration: none;
+    color: #0c081e;
+}
+.project-card .project-desc {
+    font-size: 1em;
+    color: #555;
+}
+
+/* --- Footer --- */
 .site-footer {
     position: relative;
     z-index: 2;
     padding: 5em 0;
     text-align: center;
-    border-top: 1px solid rgba(12, 8, 30, 0.1);
 }
 .site-footer .footer-content-centered {
     max-width: 600px;
     margin: 0 auto;
+    padding-top: 4em;
+    border-top: 1px solid rgba(12, 8, 30, 0.1);
 }
 .site-footer .footer-heading {
     font-size: 1.5em;
@@ -207,6 +288,6 @@ body .KW_progressBar {
   .hero{ height: 80vh!important; }
   .hero-title { font-size: 2.8em; }
   .hero-subtitle { font-size: 1.5em; }
-  .about-section { padding-top: 5em; }
+  .about-section, .ftco-section { padding-top: 5em; }
   .background-shape { display: none; }
 }
