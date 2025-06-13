@@ -473,4 +473,101 @@ body .KW_progressBar {
     }
 }
 
-/* --- REMOVED .page-banner styles --- */
+/* --- NEW --- Project Page Styles --- */
+.project-header {
+    padding: 8em 0 4em 0;
+    text-align: center;
+}
+
+.project-header .interest-text {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+
+.project-header .project-title-main {
+    font-size: 3.5em;
+    font-weight: 700;
+}
+
+.project-card {
+    margin-bottom: 3em;
+    background: transparent;
+}
+
+.project-card .project-img {
+    display: block;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-img {
+    transform: scale(1.03);
+}
+
+.project-card .project-text {
+    padding: 0 10px;
+}
+
+.project-card .project-meta {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8em;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.project-card .project-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0.5em 0;
+}
+
+.project-card .project-title a {
+    text-decoration: none;
+    color: #0c081e;
+}
+
+.project-card .project-desc {
+    font-size: 1em;
+    color: #555;
+}
+
+/* --- NEW --- Project Detail Page Styles --- */
+.project-detail-wrap {
+    padding: 6em 0;
+}
+
+.project-detail-title {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+}
+
+.project-detail-meta {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 2em;
+}
+
+.project-detail-wrap h3 {
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.project-detail-wrap blockquote {
+    border-left: 3px solid #4A8BDF;
+    padding-left: 20px;
+    font-style: italic;
+    font-size: 1.1em;
+    color: #333;
+}
