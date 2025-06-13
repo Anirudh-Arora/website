@@ -141,9 +141,6 @@ body.menu-show {
     border-radius: 12px;
     background-size: cover;
     background-position: center;
-    min-height: 4000px; /* Ensure it has a minimum height */
-
-}
 }
 
 .media.block-6.services {
