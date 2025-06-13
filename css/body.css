@@ -170,44 +170,53 @@ body .KW_progressBar {
   color:#1c1c1c;
 }
 
-
-/* --- NEW Styles for Parallax Background Shapes --- */
-.ftco-section {
-    position: relative;
-    z-index: 2; /* Ensures content is above the base body pseudo-elements */
+/* --- NEW PARALLAX SHAPE STYLES --- */
+#colorlib-page {
+    position: relative; /* This is the new stacking context */
+    z-index: 2;
 }
 
 .background-shape {
     position: absolute;
-    top: 20%;
-    left: -250px; /* Position it off-screen to the left */
     width: 500px;
     height: 500px;
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
     z-index: -1; /* Place it behind the section's content */
-    opacity: 0; /* Will be faded in by scrollax */
-    filter: blur(50px);
-    -webkit-filter: blur(50px);
+    opacity: 0;
+    filter: blur(60px);
+    -webkit-filter: blur(60px);
+    pointer-events: none; /* Make sure shapes are not clickable */
 }
 
-.background-shape.right {
-    left: auto; /* Unset the left property */
-    right: -250px; /* Position it off-screen to the right */
-    top: 10%;
+/* Specific positions for each shape */
+.shape-1 {
+    top: 50vh; 
+    left: -250px;
 }
 
-/* --- Old floating effects are removed, but we keep hover effects for the boxes --- */
+.shape-2 {
+    top: 110vh; 
+    right: -250px;
+    width: 400px;
+    height: 400px;
+}
+
+.ftco-section {
+    position: relative; 
+    z-index: 2; /* Ensures content is above the background shapes */
+}
+
+
 #research-focus .media.block-6.services {
     background: transparent;
     border-radius: 15px;
-    border: none;
-    box-shadow: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 #research-focus .media.block-6.services:hover {
     transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
 
