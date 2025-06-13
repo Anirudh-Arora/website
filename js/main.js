@@ -240,6 +240,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+// --- Scroll Progress Bar Logic ---
+// This code should be added at the end of your js/main.js file
 
+(function() {
+    // 1. Select the progress bar element from the HTML
+    const progressBar = document.querySelector('.KW_progressBar');
+
+    // 2. Check if the element actually exists on the page
+    if (!progressBar) {
+        return; // If not, do nothing
+    }
+
+    // 3. Create the function to update the bar's width
+    const updateProgressBar = () => {
+        // Get the total height of the page
+        const scrollHeight = document.documentElement.scrollHeight;
+        // Get the height of the visible window
+        const clientHeight = document.documentElement.clientHeight;
+        // Get the current vertical scroll position
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+        // Calculate the percentage of the page that has been scrolled
+        // We subtract clientHeight from scrollHeight to get the maximum scrollable distance
+        const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+
+        // 4. Set the width of the progress bar to the calculated percentage
+        progressBar.style.width = scrollPercentage + '%';
+    };
+
+    // 5. Add an event listener to the window
+    // This will call our updateProgressBar function every time the user scrolls
+    window.addEventListener('scroll', updateProgressBar);
+})();
 
   
