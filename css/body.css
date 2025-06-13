@@ -19,32 +19,24 @@ body {
 #colorlib-page {
     position: relative;
     z-index: 2;
-    padding-bottom: 2em; /* Reduced bottom padding since footer has its own */
+    padding-bottom: 8em; /* Keeps space so content doesn't go under footer */
 }
 
 body:after, body:before {
-  position: fixed;
-  content: '';
-  z-index: -1;
-  filter: blur(100px);
-  -webkit-filter: blur(100px);
+  position: fixed; content: ''; z-index: -1;
+  filter: blur(100px); -webkit-filter: blur(100px);
 }
 body:after {
   top: -10vh; right: -20vw; width: 50vw; height: 50vh;
-  background: rgba(255, 255, 255, 0.15);
-  transform: rotate(-30deg);
+  background: rgba(255, 255, 255, 0.15); transform: rotate(-30deg);
 }
 body:before {
   top: 50vh; left: -20vw; width: 45vw; height: 45vh;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(20deg);
+  background: rgba(255, 255, 255, 0.1); transform: rotate(20deg);
 }
 
 body.menu-show {
-  overflow: hidden;
-  position: fixed;
-  height: 100%;
-  width: 100%; 
+  overflow: hidden; position: fixed; height: 100%; width: 100%; 
 }
 
 body .KW_progressContainer {
@@ -82,16 +74,13 @@ body .KW_progressBar {
 }
 
 .cv-button {
-  display: inline-block; padding: 5px 15px; /* Added more padding */
+  display: inline-block; padding: 5px 15px;
   color: #ffffff !important; background-color:#4A8BDF;
   border: none; border-radius: 5px; font-size: 1.0em;
   cursor: pointer; text-decoration: none;
   transition: background-color 0.3s ease;
 }
-.cv-button:hover {
-    background-color: #3A77CF;
-}
-
+.cv-button:hover { background-color: #3A77CF; }
 
 /* Parallax Shape Styles */
 .background-shape {
@@ -105,7 +94,6 @@ body .KW_progressBar {
 .shape-2 { top: 110vh; right: -250px; width: 400px; height: 400px; }
 .ftco-section { position: relative; z-index: 2; }
 
-/* Research Interests Cards */
 #research-focus .media.block-6.services {
     background: transparent; border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -116,61 +104,51 @@ body .KW_progressBar {
     box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
 
-/* --- NEW, IMPROVED FOOTER STYLES --- */
+/* --- NEW "HORIZON" FOOTER STYLES --- */
 .site-footer {
-    position: relative;
-    z-index: 2;
-    padding: 4em 0;
-    margin-top: 4em;
-    background-color: transparent;
-    border-top: 1px solid rgba(12, 8, 30, 0.1);
-}
-.site-footer .footer-content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2em;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.site-footer .footer-column h2 {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-bottom: 1em;
-    color: #0c081e;
-}
-.site-footer .footer-column p {
-    margin: 0;
-}
-.site-footer .footer-column a {
-    color: #0c081e;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.site-footer .footer-column a:hover {
-    color: #4A8BDF;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 2em 0;
+    background: transparent;
 }
 .site-footer .footer-social {
-    display: flex;
-    gap: 25px; /* Increased gap */
+    text-align: center;
+    margin-bottom: 1.5em;
 }
 .site-footer .footer-social a {
     color: #0c081e;
-    font-size: 2em; /* Made icons larger */
+    font-size: 1.5em; /* Slightly smaller for a more refined look */
+    margin: 0 15px;
     transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 .site-footer .footer-social a:hover {
     color: #4A8BDF;
     transform: translateY(-3px);
 }
 .site-footer .footer-bottom {
-    margin-top: 4em;
-    font-size: 0.9em;
     text-align: center;
-    color: rgba(12, 8, 30, 0.6);
+    font-size: 0.9em;
+    color: rgba(12, 8, 30, 0.5);
+    border-top: 1px solid rgba(12, 8, 30, 0.1);
+    padding-top: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
-.site-footer .footer-bottom p {
+.site-footer .footer-bottom p,
+.site-footer .footer-bottom a {
     margin: 0;
+    color: rgba(12, 8, 30, 0.5);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.site-footer .footer-bottom a:hover {
+    color: #4A8BDF;
 }
 
 /* --- Desktop Navigation Bar --- */
@@ -221,11 +199,4 @@ body .KW_progressBar {
   .hero-subtitle { font-size: 1.5em; }
   #colorlib-main-nav { width:90%; }
   .background-shape { display: none; }
-  .site-footer .footer-content-grid {
-      grid-template-columns: 1fr; /* Stack on mobile */
-      text-align: center;
-  }
-  .site-footer .footer-social {
-      justify-content: center;
-  }
 }
