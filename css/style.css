@@ -8750,3 +8750,11 @@ border-radius: 5px; }
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+/* --- NEW --- Hiding the original header on desktop */
+@media (min-width: 992px) {
+    header.mobile-header {
+        display: none;
+    }
+}
