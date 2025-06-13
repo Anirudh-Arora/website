@@ -1,168 +1,475 @@
-/* --- Global Body & Background Styles --- */
 body {
     font-family: "Poppins", Arial, sans-serif;
     background: linear-gradient(135deg, #a8d0e6 0%, #e0f7fa 100%);
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 400;
     color: #0c081e;
     overflow-x: hidden;
     position: relative;
     background-attachment: fixed;
-}
-#colorlib-page {
-    position: relative;
-    z-index: 2;
-    background: transparent;
-}
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Progress Bar --- */
+.page{
+  background-color:transparent;
+}
+
+body:after {
+  position: fixed;
+  top: -10vh;
+  right: -20vw;
+  content: '';
+  width: 50vw;
+  height: 50vh;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  z-index: -1;
+  transform: rotate(-30deg);
+  filter: blur(100px);
+  -webkit-filter: blur(100px);
+}
+
+body:before {
+  position: fixed;
+  top: 50vh;
+  left: -20vw;
+  content: '';
+  width: 45vw;
+  height: 45vh;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  z-index: -1;
+  transform: rotate(20deg);
+  filter: blur(90px);
+  -webkit-filter: blur(90px);
+}
+
+body.menu-show {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%; 
+}
+
 body .KW_progressContainer {
-  left: 0; width: 100%; height: 0.4em;
-  position: fixed; top: 0px; z-index: 999;
+  left: 0;
+  width: 100%;
+  height: 0.4em;
+  margin-bottom: 0px;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.2);
+  content: "";
+  display: table;
+  table-layout: fixed;
+  z-index: 999; 
 }
+
 body .KW_progressBar {
-  width: 0%; height: 100%;
+  width: 0%;
+  float: left;
+  height: 100%;
+  z-index: 99;
+  max-width: 100%;
   background: linear-gradient(to right, #3A86FF 0%, #E63946 100%);
-  transition: width .6s ease;
+  -webkit-transition: width .6s ease;
+  transition: width .6s ease; 
 }
 
-/* --- Header & Navigation --- */
-.desktop-header {
-    position: relative; 
-    z-index: 100; 
-    padding: 1.5em 0; 
-    background: transparent;
+.scroll{
+  color: black !important;
 }
-.desktop-header .header-content {
-    display: flex; justify-content: space-between; align-items: center;
-}
-.desktop-header .logo-container .colorlib-logo {
-    font-size: 20px; text-transform: uppercase; color: #0c081e;
-    font-weight: 400; letter-spacing: 2px; display: flex; align-items: center;
-}
-.desktop-header .logo-container .logo-img {
-    width: 45px; height: 45px; border-radius: 50%;
-    margin-right: 15px; background-size: cover; background-position: center;
-}
-.desktop-nav ul { margin: 0; padding: 0; list-style: none; display: flex; }
-.desktop-nav li { margin: 0 15px; }
-.desktop-nav a {
-    color: #0c081e; font-weight: 500; text-decoration: none;
-    position: relative; padding-bottom: 5px;
-}
-.desktop-nav a::after {
-    content: ''; position: absolute; width: 0; height: 2px;
-    bottom: 0; left: 0; background-color: #4A8BDF;
-    transition: width 0.3s ease;
-}
-.desktop-nav a:hover::after,
-.desktop-nav li.active a::after {
-    width: 100%;
-}
-.mobile-header { display: none; }
-.mobile-toggle { display: none !important; }
 
-/* --- Homepage Hero Section --- */
+.ftco-animate i{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
+  font-size: 150%;
+}
+
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #0c081e;
   text-align: center;
-  margin-top: -95px; 
+  overflow: hidden; 
 }
-.hero .hero-content {
-  position: relative; z-index: 2; 
-  max-width: 800px; padding: 20px;
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; /* Allows clicks and hovers to pass through the canvas */
 }
-.hero .hero-title { font-size: 3.5em; font-weight: 700; }
-.hero .hero-subtitle { font-size: 1.5em; }
+
+/* On the homepage, the hero section itself contains the particles */
+.hero #particles-js {
+    position: absolute; /* It should be absolute *within* the hero section, not fixed */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2; 
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.hero-subtitle {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  color: #212121;
+  background-color: rgb(213, 216, 216);
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color:rgb(133, 133, 133);
+  color:#1c1c1c;
+}
+
+.hero-subtitle#line, .hero-title#Name, .hero-subtitle#hello, .hero-button#button {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.cv-button {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #ffffff !important;
+  background-color:#4A8BDF ;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.0em;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cv:hover {
+  background-color:rgb(133, 133, 133);
+  color:#1c1c1c;
+}
 
 
-/* --- General Content Sections --- */
-.ftco-section {
-    padding: 7em 0;
+/* Parallax Shape Styles */
+#colorlib-page {
     position: relative;
     z-index: 2;
 }
 
-/* --- Project Cards (New clean style) --- */
-.project-card {
-    margin-bottom: 2em;
-    background: transparent; /* No background */
-    border-radius: 10px;
-    padding: 0; /* No extra padding */
-    transition: transform 0.3s ease;
+.background-shape {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    z-index: -1; 
+    opacity: 0;
+    filter: blur(60px);
+    -webkit-filter: blur(60px);
+    pointer-events: none;
 }
-.project-card:hover {
-    transform: translateY(-5px); /* Simple hover effect */
+
+.shape-1 {
+    top: 50vh; 
+    left: -250px;
 }
-.project-card .project-img {
-    display: block;
-    height: 220px;
+
+.shape-2 {
+    top: 110vh; 
+    right: -250px;
+    width: 400px;
+    height: 400px;
+}
+
+.ftco-section {
+    position: relative; 
+    z-index: 2;
+}
+
+.about-section {
+    padding-top: 10em;
+}
+
+#research-focus .media.block-6.services {
+    background: transparent;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#research-focus .media.block-6.services:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hero{
+    height: 80vh!important;
+  }
+  .about-section {
+    padding-top: 5em;
+  }
+  .hero-title {
+      font-size: 2.8em;
+  }
+  .hero-subtitle {
+      font-size: 1.5em;
+  }
+  .hero-button {
+      padding: 0.5em 1em;
+      font-size: 0.9em;
+  }
+  #colorlib-main-nav {
+    width:90%;
+  }
+  .background-shape {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+      font-size: 2em;
+  }
+  .hero-subtitle {
+      font-size: 1em;
+  }
+  .hero-button {
+      padding: 0.5em 1em;
+      font-size: 0.8em;
+  }
+  #colorlib-main-nav {
+   width:90%;
+  }
+   #colorlib-main-nav .colorlib-table .img{
+      width:100%;
+      display:block;
+   }
+}
+
+.stellar-footer {
+  position: relative; 
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  color:#181818;
+  padding: 40px 0;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  max-width: 1140px; 
+  margin: 4em auto; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stellar-footer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+.stellar-footer .footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stellar-footer .footer-section {
+  flex: 1;
+  min-width: 250px;
+  margin: 20px;
+}
+
+.stellar-footer .footer-section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color:#000000;
+  font-weight: 600;
+}
+
+.stellar-footer .footer-section p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.stellar-footer .footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stellar-footer .footer-section ul li .footer-bottom {
+  margin: 10px 0;
+}
+
+.stellar-footer .footer-section ul li a {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-style: normal;
+  line-height: 1.5;
+  color:#525252;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section .d {
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-style: normal;
+  line-height: 1.5;
+  color:#525252;
+  font-weight: 500;
+  display: inline;
+}
+
+.stellar-footer .footer-section ul li a:hover {
+  color:#4A8BDF;
+}
+
+.stellar-footer .footer-section.social ul {
+  display: flex;
+  justify-content: center;
+}
+
+.stellar-footer .footer-section.social ul li {
+  margin: 0 10px;
+}
+
+.stellar-footer .footer-section.social ul li i {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s;
+  color:#181818;
+}
+.stellar-footer .footer-section.social ul li a:hover img {
+  transform: scale(1.1);
+}
+
+.stellar-footer .footer-bottom {
+  margin-top: 30px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 20px;
+}
+
+.stellar-footer .footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Styles for the Desktop Navigation Bar */
+.desktop-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.5em 0;
+    background: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.desktop-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.desktop-header .logo-container .colorlib-logo {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #0c081e;
+    font-weight: 400; 
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-header .logo-container .logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 1.5em;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(12, 8, 30, 0.1);
 }
-.project-card .project-text { padding: 0; }
-.project-card .project-meta {
-    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.8em;
-    color: #6c757d;
-    text-transform: uppercase;
+
+.desktop-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
 }
-.project-card .project-title {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin: 0.5em 0;
+
+.desktop-nav li {
+    margin: 0 15px;
 }
-.project-card .project-title a {
-    text-decoration: none;
+
+.desktop-nav a {
     color: #0c081e;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
 }
 
-/* --- Footer --- */
-.site-footer {
-    position: relative; z-index: 10;
-    padding: 4em 0; margin-top: 4em; text-align: center;
-    border-top: 1px solid rgba(12, 8, 30, 0.1);
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4A8BDF;
+    transition: width 0.3s ease;
 }
-.site-footer .footer-content { max-width: 600px; margin: 0 auto 3em auto; }
-.site-footer .footer-heading { font-size: 1.5em; font-weight: 600; margin-bottom: 0.5em; }
-.site-footer .footer-email { margin-bottom: 1.5em; }
-.site-footer .footer-email a {
-    font-size: 1.2em; color: #0c081e; text-decoration: none;
-    border-bottom: 2px solid transparent; transition: all 0.3s ease;
-}
-.site-footer .footer-email a:hover { color: #4A8BDF; border-bottom-color: #4A8BDF; }
-.site-footer .footer-social { display: flex; justify-content: center; gap: 30px; }
-.site-footer .footer-social a {
-    color: #0c081e; font-size: 1.8em;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-.site-footer .footer-social a:hover { color: #4A8BDF; transform: translateY(-3px); }
-.site-footer .footer-bottom {
-    margin-top: 3em; font-size: 0.9em;
-    color: rgba(12, 8, 30, 0.6);
-}
-.site-footer .footer-bottom p { margin: 0; }
 
+.desktop-nav a:hover::after,
+.desktop-nav li.active a::after {
+    width: 100%;
+}
 
-/* --- Responsive Adjustments --- */
+.mobile-header {
+    display: none;
+}
+.mobile-toggle {
+    display: none !important;
+}
+
+/* Responsive adjustments */
 @media (max-width: 991.98px) {
     .desktop-header {
-        position: absolute;
+        padding: 1em 0;
     }
     .desktop-nav {
         display: none;
@@ -172,7 +479,110 @@ body .KW_progressBar {
         float: right;
     }
     .hero {
-        margin-top: 0;
-        padding-top: 80px;
+        padding-top: 80px; 
     }
+}
+
+/* Project Page Styles */
+.project-header {
+    padding: 8em 0 4em 0;
+    text-align: center;
+}
+
+.project-header .interest-text {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 2em;
+}
+
+.project-header .project-title-main {
+    font-size: 3.5em;
+    font-weight: 700;
+}
+
+.project-card {
+    margin-bottom: 3em;
+    background: transparent;
+    border-radius: 15px;
+    padding: 1.5em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
+}
+
+.project-card .project-img {
+    display: block;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5em;
+    border-radius: 10px;
+}
+
+.project-card .project-text {
+    padding: 0;
+}
+
+.project-card .project-meta {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8em;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.project-card .project-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0.5em 0;
+}
+
+.project-card .project-title a {
+    text-decoration: none;
+    color: #0c081e;
+}
+
+.project-card .project-desc {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Project Detail Page Styles */
+.project-detail-wrap {
+    padding: 6em 0;
+}
+
+.project-detail-title {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+}
+
+.project-detail-meta {
+    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 2em;
+}
+
+.project-detail-wrap h3 {
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.project-detail-wrap blockquote {
+    border-left: 3px solid #4A8BDF;
+    padding-left: 20px;
+    font-style: italic;
+    font-size: 1.1em;
+    color: #333;
 }
