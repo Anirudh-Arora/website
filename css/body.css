@@ -103,12 +103,17 @@ body .KW_progressBar {
 }
 
 #particles-js {
-  position: absolute;
+  position: fixed; /* Use fixed position by default to cover the whole background */
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 1; 
+  z-index: 1; /* Sit behind content but on top of the gradient */
+}
+
+/* On the homepage, the hero section itself contains the particles */
+.hero #particles-js {
+    position: absolute; /* It should be absolute *within* the hero section, not fixed */
 }
 
 .hero-content {
@@ -271,6 +276,8 @@ body .KW_progressBar {
 }
 
 .stellar-footer {
+  position: relative; /* Add position relative to stack above background elements */
+  z-index: 2; /* Ensure footer is above shapes */
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -458,6 +465,7 @@ body .KW_progressBar {
     display: none !important;
 }
 
+/* Responsive adjustments */
 @media (max-width: 991.98px) {
     .desktop-header {
         padding: 1em 0;
@@ -516,7 +524,6 @@ body .KW_progressBar {
     background-repeat: no-repeat;
     margin-bottom: 1.5em;
     border-radius: 10px;
-    transition: transform 0.3s ease;
 }
 
 .project-card .project-text {
