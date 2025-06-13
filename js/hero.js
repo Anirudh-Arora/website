@@ -1,108 +1,102 @@
-tsParticles.load("particles-js", {
-  fpsLimit: 60,
-  particles: {
-    number: {
-      value: 8,
-      density: {
-        enable: true,
-        value_area: 800,
+document.addEventListener("DOMContentLoaded", () => {
+  tsParticles.load("particles-js", {
+    // This is the base configuration for the clouds
+    fpsLimit: 60,
+    particles: {
+      number: {
+        value: 8,
       },
-    },
-    color: {
-      value: "#ffffff",
-    },
-    shape: {
-      type: "image",
-      image: {
-        src: "images/cloud.svg",
-        width: 100,
-        height: 70,
+      color: {
+        value: "#ffffff",
       },
-    },
-    opacity: {
-      value: { min: 0.2, max: 0.6 },
-    },
-    size: {
-      value: { min: 30, max: 60 },
-    },
-    links: {
-      enable: false,
-    },
-    move: {
-      enable: true,
-      speed: 0.5,
-      direction: "none",
-      random: true,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-    },
-  },
-  interactivity: {
-    events: {
-      onhover: {
+      shape: {
+        type: "image",
+        image: {
+          src: "images/cloud.svg",
+          width: 100,
+          height: 70,
+        },
+      },
+      opacity: {
+        value: { min: 0.3, max: 0.7 },
+      },
+      size: {
+        value: { min: 30, max: 60 },
+      },
+      links: {
         enable: false,
       },
-      onclick: {
+      move: {
         enable: true,
-        // --- THIS IS THE KEY FIX ---
-        // We are enabling two modes at once: destroy the cloud, and trigger the emitter
-        mode: ["destroy", "emitters"],
+        speed: 0.5,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "out",
+        bounce: false,
       },
-      resize: true,
     },
-    modes: {
-      // This mode destroys the clicked particle
-      destroy: {},
-      
-      // This mode defines the emitter that will be triggered on click
-      emitters: {
-        // Emitters will be placed at the cursor's position on click
+    // This section tells the library to listen for clicks on the particles
+    interactivity: {
+      events: {
+        onclick: {
+          enable: true,
+          mode: "repulse", // A placeholder mode to ensure clicks are registered
+        },
+      },
+      modes: {
+        repulse: { // This configuration is not used, just needed to enable the mode
+            distance: 200,
+            duration: 0.4,
+        }
+      }
+    },
+    detectRetina: true,
+  })
+  .then(container => {
+    // This is the direct, manual control part that will work reliably.
+    // It adds a listener that fires *only* when a particle is clicked.
+    container.addParticleClickListener((event, particle) => {
+      if (!particle) {
+        return;
+      }
+
+      // 1. Define the "burst" emitter
+      const emitterOptions = {
         life: {
-          duration: 0.2, // The emitter itself only lasts for a moment
-          count: 1,      // It only fires once per click
+          duration: 0.1,
+          count: 1,
         },
-        rate: {
-          quantity: 15,  // It creates 15 burst particles
-          delay: 0,
-        },
+        position: particle.getPosition(), // Use the exact cloud position
         particles: {
-          // These are the properties of the "burst" particles
-          shape: {
-            type: "circle",
+          // Properties of the small burst particles
+          color: {
+            value: "#0c081e",
           },
           size: {
             value: { min: 1, max: 3 },
           },
-          color: {
-            value: "#0c081e", // Dark particles for contrast
-          },
-          opacity: {
-            value: { min: 0.4, max: 0.8 },
-            animation: {
-              enable: true,
-              speed: 3,
-              sync: false,
-              startValue: "max",
-              destroy: "min", // Particles will fade out and disappear
-            },
-          },
           move: {
             speed: { min: 5, max: 10 },
-            direction: "outside", // Explode outwards from the center
-            gravity: {
-                enable: false
+            direction: "outside",
+            decay: 0.1,
+          },
+          opacity: {
+            value: { min: 0.1, max: 0.5 },
+            animation: {
+              enable: true,
+              speed: 5,
+              destroy: "min",
             },
-            trail: {
-                enable: false
-            },
-            outModes: {
-                default: "destroy"
-            }
           },
         },
-      },
-    },
-  },
-  detectRetina: true,
+      };
+
+      // 2. Add the emitter to create the burst
+      container.addEmitter(emitterOptions);
+
+      // 3. Destroy the original cloud
+      particle.destroy();
+    });
+  });
 });
