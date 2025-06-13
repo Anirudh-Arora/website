@@ -2,39 +2,35 @@ tsParticles.load("particles-js", {
   fpsLimit: 60,
   particles: {
     number: {
-      value: 80, // Number of particles
+      value: 60, // --- CHANGED --- Reduced the number of particles
       density: {
         enable: true,
         value_area: 800,
       },
     },
     color: {
-      value: "#0c081e", // Particle color, matching your text
+      value: "#ffffff", // --- CHANGED --- A soft white for an atmospheric feel
     },
     shape: {
       type: "circle",
     },
     opacity: {
-      value: 0.5,
+      value: 0.4, // --- CHANGED --- Slightly less opaque
       random: true,
     },
     size: {
-      value: 3,
+      value: 2, // --- CHANGED --- Made particles smaller
       random: true,
     },
     links: {
-      enable: true,
-      distance: 150,
-      color: "#0c081e", // Line color
-      opacity: 0.4,
-      width: 1,
+      enable: false, // --- CHANGED --- This is the key change to remove the lines
     },
     move: {
       enable: true,
-      speed: 1, // Slow movement
-      direction: "none",
+      speed: 0.3, // --- CHANGED --- Very slow, gentle speed
+      direction: "right", // --- CHANGED --- Consistent direction, like wind
       random: false,
-      straight: false,
+      straight: true, // --- CHANGED --- Particles move in straight lines
       out_mode: "out",
       bounce: false,
     },
@@ -43,23 +39,12 @@ tsParticles.load("particles-js", {
     detect_on: "canvas",
     events: {
       onhover: {
-        enable: true,
-        mode: "repulse", // Particles move away from the cursor
+        enable: false, // --- CHANGED --- Disabled mouse hover effects
       },
       onclick: {
-        enable: true,
-        mode: "push", // Adds more particles on click
+        enable: false, // --- CHANGED --- Disabled mouse click effects
       },
       resize: true,
-    },
-    modes: {
-      repulse: {
-        distance: 100,
-        duration: 0.4,
-      },
-      push: {
-        particles_nb: 4,
-      },
     },
   },
   detectRetina: true,
