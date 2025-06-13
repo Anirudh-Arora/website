@@ -16,6 +16,12 @@ body {
   background-color:transparent;
 }
 
+#colorlib-page {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 8em; /* Add space at the bottom for the footer */
+}
+
 body:after {
   position: fixed;
   top: -10vh;
@@ -79,18 +85,6 @@ body .KW_progressBar {
   transition: width .6s ease; 
 }
 
-.scroll{
-  color: black !important;
-}
-
-.ftco-animate i{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%; 
-  font-size: 150%;
-}
-
 .hero {
   position: relative;
   height: 100vh;
@@ -103,18 +97,12 @@ body .KW_progressBar {
 }
 
 #particles-js {
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 1;
-  pointer-events: none; /* Allows clicks and hovers to pass through the canvas */
-}
-
-/* On the homepage, the hero section itself contains the particles */
-.hero #particles-js {
-    position: absolute; /* It should be absolute *within* the hero section, not fixed */
+  z-index: 1; 
 }
 
 .hero-content {
@@ -135,29 +123,6 @@ body .KW_progressBar {
   margin-bottom: 1em;
 }
 
-.hero-button {
-  display: inline-block;
-  padding: 0.75em 1.5em;
-  color: #212121;
-  background-color: rgb(213, 216, 216);
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.hero-button:hover {
-  background-color:rgb(133, 133, 133);
-  color:#1c1c1c;
-}
-
-.hero-subtitle#line, .hero-title#Name, .hero-subtitle#hello, .hero-button#button {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
 .cv-button {
   display: inline-block;
   padding-left: 5px;
@@ -171,18 +136,7 @@ body .KW_progressBar {
   text-decoration: none;
 }
 
-.cv:hover {
-  background-color:rgb(133, 133, 133);
-  color:#1c1c1c;
-}
-
-
 /* Parallax Shape Styles */
-#colorlib-page {
-    position: relative;
-    z-index: 2;
-}
-
 .background-shape {
     position: absolute;
     width: 500px;
@@ -213,10 +167,6 @@ body .KW_progressBar {
     z-index: 2;
 }
 
-.about-section {
-    padding-top: 10em;
-}
-
 #research-focus .media.block-6.services {
     background: transparent;
     border-radius: 15px;
@@ -229,165 +179,55 @@ body .KW_progressBar {
     box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
 
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .hero{
-    height: 80vh!important;
-  }
-  .about-section {
-    padding-top: 5em;
-  }
-  .hero-title {
-      font-size: 2.8em;
-  }
-  .hero-subtitle {
-      font-size: 1.5em;
-  }
-  .hero-button {
-      padding: 0.5em 1em;
-      font-size: 0.9em;
-  }
-  #colorlib-main-nav {
-    width:90%;
-  }
-  .background-shape {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-title {
-      font-size: 2em;
-  }
-  .hero-subtitle {
-      font-size: 1em;
-  }
-  .hero-button {
-      padding: 0.5em 1em;
-      font-size: 0.8em;
-  }
-  #colorlib-main-nav {
-   width:90%;
-  }
-   #colorlib-main-nav .colorlib-table .img{
-      width:100%;
-      display:block;
-   }
-}
-
-.stellar-footer {
-  position: relative; 
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-  color:#181818;
-  padding: 40px 0;
-  font-family: 'Arial', sans-serif;
+/* --- NEW MINIMALIST FOOTER STYLES --- */
+.site-footer {
+  padding: 2em 0;
   text-align: center;
-  max-width: 1140px; 
-  margin: 4em auto; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.stellar-footer:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(12, 8, 30, 0.1);
 }
 
-.stellar-footer .footer-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  max-width: 1200px;
-  margin: 0 auto;
+.site-footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
-.stellar-footer .footer-section {
-  flex: 1;
-  min-width: 250px;
-  margin: 20px;
+.site-footer .footer-contact a {
+    color: #0c081e;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.site-footer .footer-contact a:hover {
+    color: #4A8BDF;
 }
 
-.stellar-footer .footer-section h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  color:#000000;
-  font-weight: 600;
+.site-footer .footer-social a {
+    color: #0c081e;
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
 }
 
-.stellar-footer .footer-section p {
-  font-size: 16px;
-  line-height: 1.5;
+.site-footer .footer-social a:hover {
+    color: #4A8BDF;
+    transform: translateY(-2px);
 }
 
-.stellar-footer .footer-section ul {
-  list-style: none;
-  padding: 0;
+.site-footer .footer-bottom {
+    margin-top: 2em;
+    font-size: 0.9em;
+    color: rgba(12, 8, 30, 0.6);
+}
+.site-footer .footer-bottom p {
+    margin: 0;
 }
 
-.stellar-footer .footer-section ul li .footer-bottom {
-  margin: 10px 0;
-}
 
-.stellar-footer .footer-section ul li a {
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-style: normal;
-  line-height: 1.5;
-  color:#525252;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-section .d {
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-style: normal;
-  line-height: 1.5;
-  color:#525252;
-  font-weight: 500;
-  display: inline;
-}
-
-.stellar-footer .footer-section ul li a:hover {
-  color:#4A8BDF;
-}
-
-.stellar-footer .footer-section.social ul {
-  display: flex;
-  justify-content: center;
-}
-
-.stellar-footer .footer-section.social ul li {
-  margin: 0 10px;
-}
-
-.stellar-footer .footer-section.social ul li i {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s;
-  color:#181818;
-}
-.stellar-footer .footer-section.social ul li a:hover img {
-  transform: scale(1.1);
-}
-
-.stellar-footer .footer-bottom {
-  margin-top: 30px;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  padding-top: 20px;
-}
-
-.stellar-footer .footer-bottom p {
-  margin: 0;
-  font-size: 14px;
-}
-
-/* Styles for the Desktop Navigation Bar */
+/* --- Desktop Navigation Bar --- */
 .desktop-header {
     position: absolute;
     top: 0;
@@ -398,13 +238,11 @@ body .KW_progressBar {
     background: transparent;
     transition: background-color 0.3s ease;
 }
-
 .desktop-header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .desktop-header .logo-container .colorlib-logo {
     font-size: 20px;
     text-transform: uppercase;
@@ -414,7 +252,6 @@ body .KW_progressBar {
     display: flex;
     align-items: center;
 }
-
 .desktop-header .logo-container .logo-img {
     width: 45px;
     height: 45px;
@@ -423,18 +260,15 @@ body .KW_progressBar {
     background-size: cover;
     background-position: center;
 }
-
 .desktop-nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
 }
-
 .desktop-nav li {
     margin: 0 15px;
 }
-
 .desktop-nav a {
     color: #0c081e;
     font-weight: 500;
@@ -442,7 +276,6 @@ body .KW_progressBar {
     position: relative;
     padding-bottom: 5px;
 }
-
 .desktop-nav a::after {
     content: '';
     position: absolute;
@@ -453,12 +286,10 @@ body .KW_progressBar {
     background-color: #4A8BDF;
     transition: width 0.3s ease;
 }
-
 .desktop-nav a:hover::after,
 .desktop-nav li.active a::after {
     width: 100%;
 }
-
 .mobile-header {
     display: none;
 }
@@ -478,111 +309,25 @@ body .KW_progressBar {
         display: block !important;
         float: right;
     }
-    .hero {
-        padding-top: 80px; 
-    }
 }
-
-/* Project Page Styles */
-.project-header {
-    padding: 8em 0 4em 0;
-    text-align: center;
-}
-
-.project-header .interest-text {
-    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.9em;
-    letter-spacing: 0.1em;
-    color: #555;
-    text-transform: uppercase;
-    margin-bottom: 2em;
-}
-
-.project-header .project-title-main {
-    font-size: 3.5em;
-    font-weight: 700;
-}
-
-.project-card {
-    margin-bottom: 3em;
-    background: transparent;
-    border-radius: 15px;
-    padding: 1.5em;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
-}
-
-.project-card .project-img {
-    display: block;
-    height: 220px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 1.5em;
-    border-radius: 10px;
-}
-
-.project-card .project-text {
-    padding: 0;
-}
-
-.project-card .project-meta {
-    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.8em;
-    color: #6c757d;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-}
-
-.project-card .project-title {
-    font-size: 1.5em;
-    font-weight: 600;
-    margin: 0.5em 0;
-}
-
-.project-card .project-title a {
-    text-decoration: none;
-    color: #0c081e;
-}
-
-.project-card .project-desc {
-    font-size: 1em;
-    color: #555;
-}
-
-/* Project Detail Page Styles */
-.project-detail-wrap {
-    padding: 6em 0;
-}
-
-.project-detail-title {
-    font-size: 3em;
-    font-weight: 700;
-    margin-bottom: 0.2em;
-}
-
-.project-detail-meta {
-    font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    color: #6c757d;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    margin-bottom: 2em;
-}
-
-.project-detail-wrap h3 {
-    font-weight: 600;
-    margin-bottom: 1em;
-}
-
-.project-detail-wrap blockquote {
-    border-left: 3px solid #4A8BDF;
-    padding-left: 20px;
-    font-style: italic;
-    font-size: 1.1em;
-    color: #333;
+@media (max-width: 768px) {
+  .hero{
+    height: 80vh!important;
+  }
+  .hero-title {
+      font-size: 2.8em;
+  }
+  .hero-subtitle {
+      font-size: 1.5em;
+  }
+  #colorlib-main-nav {
+    width:90%;
+  }
+  .background-shape {
+    display: none;
+  }
+  .footer-content {
+      flex-direction: column; /* Stack footer items vertically on mobile */
+      gap: 1.5em;
+  }
 }
