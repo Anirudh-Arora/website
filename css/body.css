@@ -170,9 +170,10 @@ body .KW_progressBar {
   color:#1c1c1c;
 }
 
+
 /* --- NEW PARALLAX SHAPE STYLES --- */
 #colorlib-page {
-    position: relative; /* This is the new stacking context */
+    position: relative;
     z-index: 2;
 }
 
@@ -182,14 +183,13 @@ body .KW_progressBar {
     height: 500px;
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
-    z-index: -1; /* Place it behind the section's content */
+    z-index: -1; 
     opacity: 0;
     filter: blur(60px);
     -webkit-filter: blur(60px);
-    pointer-events: none; /* Make sure shapes are not clickable */
+    pointer-events: none;
 }
 
-/* Specific positions for each shape */
 .shape-1 {
     top: 50vh; 
     left: -250px;
@@ -204,9 +204,13 @@ body .KW_progressBar {
 
 .ftco-section {
     position: relative; 
-    z-index: 2; /* Ensures content is above the background shapes */
+    z-index: 2;
 }
 
+/* --- MODIFIED --- Adjusted padding for the About page content */
+.about-section {
+    padding-top: 10em; /* Increase top padding to bring it down from the header */
+}
 
 #research-focus .media.block-6.services {
     background: transparent;
@@ -240,7 +244,7 @@ body .KW_progressBar {
     width:90%;
   }
   .background-shape {
-    display: none; /* Hide background shapes on smaller screens to save performance */
+    display: none;
   }
 }
 
@@ -469,41 +473,4 @@ body .KW_progressBar {
     }
 }
 
-/* --- NEW --- Styles for the smaller page banner on sub-pages --- */
-.page-banner {
-  position: relative;
-  height: 40vh; /* Much shorter than the main hero */
-  min-height: 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #0c081e;
-  text-align: center;
-  overflow: hidden; 
-}
-
-/* We can reuse the particles-js ID for the background */
-.page-banner #particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1; 
-}
-
-.page-banner .banner-content {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
-}
-
-.page-banner .banner-content h1 {
-  font-size: 3em;
-  font-weight: 700;
-}
-
-/* Adjust top padding of the following section to reduce the gap */
-.about-section {
-    padding-top: 3em;
-}
+/* --- REMOVED .page-banner styles --- */
