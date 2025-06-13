@@ -171,7 +171,7 @@ body .KW_progressBar {
 }
 
 
-/* --- NEW PARALLAX SHAPE STYLES --- */
+/* Parallax Shape Styles */
 #colorlib-page {
     position: relative;
     z-index: 2;
@@ -207,9 +207,8 @@ body .KW_progressBar {
     z-index: 2;
 }
 
-/* --- MODIFIED --- Adjusted padding for the About page content */
 .about-section {
-    padding-top: 10em; /* Increase top padding to bring it down from the header */
+    padding-top: 10em;
 }
 
 #research-focus .media.block-6.services {
@@ -229,6 +228,9 @@ body .KW_progressBar {
 @media (max-width: 768px) {
   .hero{
     height: 80vh!important;
+  }
+  .about-section {
+    padding-top: 5em;
   }
   .hero-title {
       font-size: 2.8em;
@@ -456,7 +458,6 @@ body .KW_progressBar {
     display: none !important;
 }
 
-/* Responsive adjustments */
 @media (max-width: 991.98px) {
     .desktop-header {
         padding: 1em 0;
@@ -473,7 +474,7 @@ body .KW_progressBar {
     }
 }
 
-/* --- NEW --- Project Page Styles --- */
+/* Project Page Styles */
 .project-header {
     padding: 8em 0 4em 0;
     text-align: center;
@@ -496,24 +497,30 @@ body .KW_progressBar {
 .project-card {
     margin-bottom: 3em;
     background: transparent;
+    border-radius: 15px;
+    padding: 1.5em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
 }
 
 .project-card .project-img {
     display: block;
-    height: 250px;
+    height: 220px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin-bottom: 1.5em;
+    border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
-.project-card:hover .project-img {
-    transform: scale(1.03);
-}
-
 .project-card .project-text {
-    padding: 0 10px;
+    padding: 0;
 }
 
 .project-card .project-meta {
@@ -540,7 +547,7 @@ body .KW_progressBar {
     color: #555;
 }
 
-/* --- NEW --- Project Detail Page Styles --- */
+/* Project Detail Page Styles */
 .project-detail-wrap {
     padding: 6em 0;
 }
