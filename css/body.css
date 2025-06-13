@@ -337,3 +337,100 @@ body .KW_progressBar {
   margin: 0;
   font-size: 14px;
 }
+
+/* --- NEW --- Styles for the Desktop Navigation Bar --- */
+.desktop-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.5em 0;
+    background: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.desktop-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.desktop-header .logo-container .colorlib-logo {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #0c081e;
+    font-weight: 600;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-header .logo-container .logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+    background-size: cover;
+    background-position: center;
+}
+
+.desktop-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.desktop-nav li {
+    margin: 0 15px;
+}
+
+.desktop-nav a {
+    color: #0c081e;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #4A8BDF;
+    transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav li.active a::after {
+    width: 100%;
+}
+
+/* Hide the old header and new desktop nav on mobile */
+.mobile-header {
+    display: none;
+}
+.mobile-toggle {
+    display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .desktop-header {
+        padding: 1em 0;
+    }
+    .desktop-nav {
+        display: none;
+    }
+    .mobile-toggle {
+        display: block !important;
+        float: right;
+    }
+    .hero {
+        padding-top: 80px; /* Add padding to prevent overlap with header */
+    }
+}
