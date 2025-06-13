@@ -138,12 +138,7 @@ body.menu-show {
 }
 
 .author-img {
-    border-radius: 12px;
-    background-size: cover;
-    background-position: center;
-    min-height: 450px; /* Ensures a good minimum height on all screen sizes */
-    -ms-flex-item-align: stretch !important; /* IE fallback */
-    align-self: stretch !important; /* This tells the image column to match the text column's height */
+    border-radius: 10px;
 }
 
 .media.block-6.services {
