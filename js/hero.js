@@ -1,93 +1,85 @@
-tsParticles.load("particles-js", {
-  fpsLimit: 60,
-  particles: {
-    number: {
-      value: 8, // Keeping the reduced cloud count
-      density: {
-        enable: true,
-        value_area: 800,
+document.addEventListener("DOMContentLoaded", () => {
+  tsParticles.load("particles-js", {
+    fpsLimit: 60,
+    particles: {
+      number: {
+        value: 8,
+        density: {
+          enable: true,
+          value_area: 800,
+        },
       },
-    },
-    color: {
-      value: "#ffffff",
-    },
-    shape: {
-      type: "image",
-      image: {
-        src: "images/cloud.svg", // Using the new, better cloud shape
-        width: 100,
-        height: 70, // Adjusted to match the new SVG's aspect ratio
+      color: {
+        value: "#ffffff",
       },
-    },
-    opacity: {
-      value: { min: 0.2, max: 0.6 },
-    },
-    size: {
-      value: { min: 30, max: 60 }, // Adjusted sizes for the new cloud shape
-    },
-    links: {
-      enable: false,
-    },
-    move: {
-      enable: true,
-      speed: 0.5,
-      direction: "none",
-      random: true,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-    },
-  },
-  interactivity: {
-    events: {
-      onhover: {
+      shape: {
+        type: "image",
+        image: {
+          src: "images/cloud.svg",
+          width: 100,
+          height: 70,
+        },
+      },
+      opacity: {
+        value: { min: 0.2, max: 0.6 },
+      },
+      size: {
+        value: { min: 30, max: 60 },
+      },
+      links: {
         enable: false,
       },
-      onclick: {
+      move: {
         enable: true,
-        // --- CHANGED --- Using built-in modes is more reliable
-        mode: ["destroy", "emitters"], 
+        speed: 0.5,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "out",
+        bounce: false,
       },
-      resize: true,
     },
-    modes: {
-      // This mode automatically destroys the clicked particle
-      destroy: {
-        mode: "split",
-        split: {
-          count: 1, // We will handle the burst with our emitter instead
-          particles: {
-            color: {
-              value: ["#5bc0eb", "#fde74c", "#9bc53d"], // Example split colors
-            },
-          },
+    interactivity: {
+      events: {
+        // --- THIS IS THE KEY ---
+        // We tell the library to listen for clicks on particles
+        onclick: {
+          enable: true,
+          mode: "trail", // Using a dummy mode to ensure click detection is active
         },
+        resize: true,
       },
-      // This mode defines the emitter that will fire on click
-      emitters: {
-        name: "burst",
+    },
+    detectRetina: true,
+
+  }).then(container => {
+    // --- THIS IS OUR CUSTOM LOGIC THAT WILL NOW WORK ---
+    // We add a listener that fires specifically when a particle is clicked
+    container.canvas.element.addEventListener("particleClicked", (event) => {
+      const { particle } = event.detail;
+
+      if (!particle) {
+        return;
+      }
+      
+      // Configuration for the "burst" particles
+      const emitterOptions = {
         life: {
-          duration: 0.1,
-          count: 1,
+          duration: 0.1, // Emitter lasts for a very short time
+          count: 1,      // Emits only once
         },
-        // The emitter will be placed at the cursor's position
-        position: {
-          x: 50,
-          y: 50,
-        },
-        rate: {
-          quantity: 10, // Fire 10 particles in the burst
-          delay: 0.1,
+        // Place the emitter at the exact position of the clicked cloud
+        position: particle.getPosition(),
+        size: {
+          width: 0,
+          height: 0,
         },
         particles: {
-          shape: {
-            type: "circle",
-          },
           size: {
             value: { min: 1, max: 2 },
           },
           color: {
-            value: "#0c081e", // Dark particles for contrast
+            value: "#0c081e", // Dark particles for good contrast
           },
           move: {
             speed: { min: 5, max: 10 },
@@ -101,12 +93,17 @@ tsParticles.load("particles-js", {
               speed: 2,
               sync: false,
               startValue: "max",
-              destroy: "min",
+              destroy: "min", // Particles fade out and disappear
             },
           },
         },
-      },
-    },
-  },
-  detectRetina: true,
+      };
+
+      // Create the burst emitter
+      container.addEmitter(emitterOptions);
+      
+      // Destroy the original cloud particle
+      particle.destroy();
+    });
+  });
 });
