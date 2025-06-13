@@ -2,35 +2,35 @@ tsParticles.load("particles-js", {
   fpsLimit: 60,
   particles: {
     number: {
-      value: 60, // --- CHANGED --- Reduced the number of particles
+      value: 60, 
       density: {
         enable: true,
         value_area: 800,
       },
     },
     color: {
-      value: "#ffffff", // --- CHANGED --- A soft white for an atmospheric feel
+      value: "#0c081e", // --- THE ONLY CHANGE IS HERE --- Changed from white to dark blue
     },
     shape: {
       type: "circle",
     },
     opacity: {
-      value: 0.4, // --- CHANGED --- Slightly less opaque
+      value: 0.4, 
       random: true,
     },
     size: {
-      value: 2, // --- CHANGED --- Made particles smaller
+      value: 2, 
       random: true,
     },
     links: {
-      enable: false, // --- CHANGED --- This is the key change to remove the lines
+      enable: false, 
     },
     move: {
       enable: true,
-      speed: 0.3, // --- CHANGED --- Very slow, gentle speed
-      direction: "right", // --- CHANGED --- Consistent direction, like wind
+      speed: 0.3, 
+      direction: "right", 
       random: false,
-      straight: true, // --- CHANGED --- Particles move in straight lines
+      straight: true, 
       out_mode: "out",
       bounce: false,
     },
@@ -39,10 +39,10 @@ tsParticles.load("particles-js", {
     detect_on: "canvas",
     events: {
       onhover: {
-        enable: false, // --- CHANGED --- Disabled mouse hover effects
+        enable: false,
       },
       onclick: {
-        enable: false, // --- CHANGED --- Disabled mouse click effects
+        enable: false,
       },
       resize: true,
     },
