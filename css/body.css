@@ -61,7 +61,7 @@ body .KW_progressContainer {
   position: fixed;
   top: 0px;
   overflow: hidden;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.2);
   content: "";
   display: table;
   table-layout: fixed;
@@ -99,23 +99,21 @@ body .KW_progressBar {
   align-items: center;
   color: #0c081e;
   text-align: center;
-  overflow: hidden; /* Important for containing the particle canvas */
+  overflow: hidden; 
 }
 
-/* Styles for the particle animation container */
 #particles-js {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 1; /* Places it behind the text content */
+  z-index: 1; 
 }
-
 
 .hero-content {
   position: relative;
-  z-index: 2; /* Increased to be on top of particles */
+  z-index: 2; 
   max-width: 800px;
   padding: 20px;
 }
@@ -172,6 +170,48 @@ body .KW_progressBar {
   color:#1c1c1c;
 }
 
+
+/* --- NEW Styles for Parallax Background Shapes --- */
+.ftco-section {
+    position: relative;
+    z-index: 2; /* Ensures content is above the base body pseudo-elements */
+}
+
+.background-shape {
+    position: absolute;
+    top: 20%;
+    left: -250px; /* Position it off-screen to the left */
+    width: 500px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    z-index: -1; /* Place it behind the section's content */
+    opacity: 0; /* Will be faded in by scrollax */
+    filter: blur(50px);
+    -webkit-filter: blur(50px);
+}
+
+.background-shape.right {
+    left: auto; /* Unset the left property */
+    right: -250px; /* Position it off-screen to the right */
+    top: 10%;
+}
+
+/* --- Old floating effects are removed, but we keep hover effects for the boxes --- */
+#research-focus .media.block-6.services {
+    background: transparent;
+    border-radius: 15px;
+    border: none;
+    box-shadow: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#research-focus .media.block-6.services:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(12, 8, 30, 0.15);
+}
+
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .hero{
@@ -189,6 +229,9 @@ body .KW_progressBar {
   }
   #colorlib-main-nav {
     width:90%;
+  }
+  .background-shape {
+    display: none; /* Hide background shapes on smaller screens to save performance */
   }
 }
 
@@ -210,23 +253,6 @@ body .KW_progressBar {
       width:100%;
       display:block;
    }
-}
-
-.floating-panel {
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.35); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.floating-panel:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
 }
 
 .stellar-footer {
@@ -338,7 +364,7 @@ body .KW_progressBar {
   font-size: 14px;
 }
 
-/* --- NEW --- Styles for the Desktop Navigation Bar --- */
+/* Styles for the Desktop Navigation Bar */
 .desktop-header {
     position: absolute;
     top: 0;
@@ -360,7 +386,7 @@ body .KW_progressBar {
     font-size: 20px;
     text-transform: uppercase;
     color: #0c081e;
-    font-weight: 400;
+    font-weight: 400; 
     letter-spacing: 2px;
     display: flex;
     align-items: center;
@@ -410,7 +436,6 @@ body .KW_progressBar {
     width: 100%;
 }
 
-/* Hide the old header and new desktop nav on mobile */
 .mobile-header {
     display: none;
 }
@@ -431,6 +456,6 @@ body .KW_progressBar {
         float: right;
     }
     .hero {
-        padding-top: 80px; /* Add padding to prevent overlap with header */
+        padding-top: 80px; 
     }
 }
