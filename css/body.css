@@ -291,3 +291,71 @@ body .KW_progressBar {
   .about-section, .ftco-section { padding-top: 5em; }
   .background-shape { display: none; }
 }
+
+
+/* NEW PROJECT PAGE */
+/* --- NEW --- Project Detail Page Styles --- */
+
+.project-main-content .project-detail-title {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 1em;
+    line-height: 1.2;
+}
+
+.project-main-content h3 {
+    font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.project-main-content blockquote {
+    border-left: 3px solid #4A8BDF;
+    padding-left: 20px;
+    font-style: italic;
+    font-size: 1.1em;
+    color: #333;
+    margin: 2em 0;
+}
+
+.project-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 120px; /* Adjust this value to set the distance from the top when it sticks */
+}
+
+.project-sidebar .sidebar-box {
+    margin-bottom: 2em;
+    padding: 1.5em;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.project-sidebar .sidebar-box h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 1em;
+}
+
+.project-sidebar .sidebar-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-sidebar .sidebar-box ul li {
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.project-sidebar .sidebar-box ul li span {
+    color: #0c081e;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.project-sidebar .sidebar-box img {
+    border-radius: 10px;
+}
