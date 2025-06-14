@@ -31,7 +31,6 @@
 
     <div class="page">
 		<nav id="colorlib-main-nav" role="navigation">
-            <!-- Mobile Nav Content -->
             <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
             <div class="js-fullheight colorlib-table">
               <div class="img" style="background-image: url(images/Myanni.png);"></div>
@@ -76,46 +75,49 @@
 
         <section class="ftco-section">
             <div class="container">
-                <div class="row">
-                    <!-- Main Content Column (8 units wide) -->
-                    <div class="col-lg-8">
-                        <div class="project-main-content ftco-animate">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+
+                        <!-- Article Header -->
+                        <div class="project-article-header ftco-animate">
                             <h1 class="project-detail-title">Impacts of Stratospheric Aerosol Injection</h1>
+                            <p class="author-info">
+                                By Anirudh Arora / <span>MAY 2024</span> / <span>CLIMATE MODELING</span>
+                            </p>
+                        </div>
+
+                        <!-- Article Content -->
+                        <div class="project-article-content ftco-animate">
+                            <img src="images/project-geomip.jpg" alt="Project visualization" class="img-fluid mb-5">
                             
-                            <h3 class="mt-5">Abstract</h3>
+                            <h3>Abstract</h3>
                             <p>This project analyzed GeoMIP G6 experiment outputs from the CESM-WACCM model to quantitatively assess the impacts of stratospheric aerosol injection (SAI) on the South Asian monsoon system. The primary goal was to identify significant changes in precipitation patterns, temperature gradients, and atmospheric circulation resulting from this geoengineering approach.</p>
 
-                            <h3 class="mt-5">Methodology</h3>
+                            <h3>Methodology</h3>
                             <p>A comprehensive workflow was developed in Python utilizing libraries such as Xarray, NumPy, and Matplotlib. This allowed for the efficient processing of large-scale NetCDF datasets. Statistical analysis was performed to distinguish the climate signal from natural variability, and results were visualized to communicate the spatial and temporal impacts of SAI.</p>
                             
                             <blockquote>
                                 <p>The key finding was a statistically significant shift in monsoon onset and a reduction in overall precipitation, highlighting the complex regional trade-offs of solar radiation management.</p>
                             </blockquote>
 
-                            <h3 class="mt-5">Results & Figures</h3>
+                            <h3>Results & Figures</h3>
                             <p>Below is a figure showing the anomalous precipitation (mm/day) during the monsoon season under the G6sulfur scenario compared to the control run.</p>
                             <img src="images/sample-figure.png" alt="Anomalous Precipitation Figure" class="img-fluid mb-4 mt-4">
                             
                             <p>Further work could involve analyzing additional climate variables and exploring the socio-economic implications of these findings.</p>
                         </div>
-                    </div>
 
-                    <!-- Sidebar Column (4 units wide) -->
-                    <div class="col-lg-4">
-                        <div class="project-sidebar ftco-animate">
-                            <div class="sidebar-box">
-                                <h3>Project Details</h3>
-                                <ul>
-                                    <li><span>Date:</span> <strong>May 2024</strong></li>
-                                    <li><span>Field:</span> <strong>Climate Modeling</strong></li>
-                                    <li><span>Supervisor:</span> <strong>Dr. X</strong></li>
-                                </ul>
+                        <!-- About the Author Box -->
+                        <div class="about-author d-flex p-4 bg-light ftco-animate">
+                            <div class="bio-img mr-4">
+                                <img src="images/anni.jpeg" alt="Anirudh Arora" class="img-fluid">
                             </div>
-                            <div class="sidebar-box">
-                                <h3>Featured Image</h3>
-                                <img src="images/project-geomip.jpg" alt="Project visualization" class="img-fluid">
+                            <div class="desc">
+                                <h3>Anirudh Arora</h3>
+                                <p>A final-year Environmental Science major at IISER Bhopal with a passion for understanding and communicating climate science. Currently a visiting researcher at the DST Centre of Excellence in Climate Modeling, IIT Delhi.</p>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
