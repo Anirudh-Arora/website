@@ -414,31 +414,41 @@ body .KW_progressBar {
     margin: 2em 0;
 }
 
-/* About Author Box */
-.about-author {
-    margin-top: 5em;
-    border-radius: 15px;
-    padding: 2em !important;
-    background: rgba(255, 255, 255, 0.2) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* --- NEW --- Clean Author Box Styles --- */
+
+/* A clean line to separate content from the author bio */
+.article-separator {
+    margin: 4em 0;
+    border: none;
+    border-top: 1px solid rgba(12, 8, 30, 0.1);
 }
 
-.about-author .bio-img {
-    width: 80px;
-    height: 80px;
-}
-.about-author .bio-img img {
-    border-radius: 50%;
+.article-author-box {
+    align-items: center; /* Vertically aligns the image and text */
+    margin-bottom: 4em;
 }
 
-.about-author .desc h3 {
-    font-size: 1.3em;
-    margin-top: 0;
+.article-author-box .author-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 2em;
 }
 
-.about-author .desc p {
-    font-size: 0.9em;
-    line-height: 1.6;
+.article-author-box .author-image img {
+    border-radius: 50%; /* Makes the image circular */
+    box-shadow: none; /* Removes any previous shadows */
+}
+
+.article-author-box .author-info h4 {
+    font-weight: 600;
+    font-size: 1.4em;
+    margin: 0 0 0.5em 0;
+}
+
+.article-author-box .author-info p {
+    font-size: 1em;
+    line-height: 1.7;
+    margin: 0;
     color: #555;
 }
 
