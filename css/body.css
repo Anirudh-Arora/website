@@ -424,13 +424,13 @@ body .KW_progressBar {
 }
 
 .article-author-box {
-    align-items: center; /* Vertically aligns the image and text */
+    align-items: flex-start; /* Vertically aligns the image and text */
     margin-bottom: 4em;
 }
 
 .article-author-box .author-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin-right: 2em;
 }
 
