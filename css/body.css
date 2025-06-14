@@ -414,42 +414,71 @@ body .KW_progressBar {
     margin: 2em 0;
 }
 
-/* --- NEW --- Clean Author Box Styles --- */
+/* --- NEW --- Final, Corrected Author Box Styles --- */
 
-/* A clean line to separate content from the author bio */
 .article-separator {
     margin: 4em 0;
     border: none;
     border-top: 1px solid rgba(12, 8, 30, 0.1);
 }
 
+/* 1. The main container is a flexbox */
 .article-author-box {
-    align-items: flex-start; /* Vertically aligns the image and text */
+    display: flex;
+    align-items: stretch; /* This is the key: tells children to stretch to the same height */
+    gap: 2em; /* Creates space between the image and the text */
     margin-bottom: 4em;
 }
 
-.article-author-box .author-image {
-    width: 120px;
-    height: 120px;
-    margin-right: 2em;
+/* 2. The image container */
+.article-author-box .author-image-container {
+    flex: 0 0 150px; /* Gives the image a fixed width of 150px */
 }
 
-.article-author-box .author-image img {
-    border-radius: 50%; /* Makes the image circular */
-    box-shadow: none; /* Removes any previous shadows */
+/* 3. The image itself */
+.article-author-box .author-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 50%;
 }
 
-.article-author-box .author-info h4 {
+/* 4. The text container */
+.article-author-box .author-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers the text within its available space */
+}
+
+.article-author-box .author-info-container h3 {
     font-weight: 600;
     font-size: 1.4em;
     margin: 0 0 0.5em 0;
 }
 
-.article-author-box .author-info p {
+.article-author-box .author-info-container p {
     font-size: 1em;
     line-height: 1.7;
     margin: 0;
     color: #555;
+    text-align: left;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 767.98px) {
+    .article-author-box {
+        flex-direction: column; /* Stack the image on top of the text */
+        align-items: center;    /* Center the items */
+        text-align: center;
+    }
+    .article-author-box .author-image-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5em;
+    }
+    .article-author-box .author-info-container {
+        text-align: center;
+    }
 }
 
 /* --- NEW --- Styles for the References list on project pages --- */
