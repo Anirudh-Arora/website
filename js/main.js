@@ -1,227 +1,187 @@
- AOS.init({
- 	duration: 800,
- 	easing: 'slide'
- });
+/* ============================================================
+   MAIN.JS — Anirudh Arora Portfolio
+   Handles: dark mode, nav scroll, hamburger, scroll reveal,
+            typing effect, scroll progress bar
+   ============================================================ */
 
-$(document).ready(function($) {
+/* ── Dark / Light Mode Toggle ────────────────────────────── */
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon   = document.getElementById('theme-icon');
 
-	"use strict";
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  if (themeIcon) themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', theme);
+}
 
-	$(window).stellar({
-    responsive: false,
-    parallaxBackgrounds: true,
-    parallaxElements: true,
-    horizontalScrolling: false,
-    hideDistantElements: false,
-    scrollProperty: 'scroll'
+// Load saved theme on page init
+(function() {
+  const saved = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(saved);
+})();
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+}
+
+/* ── Navigation: scroll shadow + active link ─────────────── */
+const siteNav = document.querySelector('.site-nav');
+
+window.addEventListener('scroll', () => {
+  if (!siteNav) return;
+  siteNav.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ── Hamburger Menu ──────────────────────────────────────── */
+const hamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('nav-mobile');
+
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
 
-	// Scrollax
-  $.Scrollax();
+  // Close on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
 
+/* ── Scroll Progress Bar ─────────────────────────────────── */
+const progressBar = document.getElementById('scroll-progress');
 
-	// loader
-	var loader = function() {
-		setTimeout(function() { 
-			if($('#ftco-loader').length > 0) {
-				$('#ftco-loader').removeClass('show');
-			}
-		}, 1);
-	};
-	loader();
+if (progressBar) {
+  window.addEventListener('scroll', () => {
+    const scrollTop    = window.scrollY;
+    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent= docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = scrollPercent + '%';
+  }, { passive: true });
+}
 
-	var carousel = function() {
-		$('.home-slider').owlCarousel({
-	    loop:true,
-	    autoplay: true,
-	    margin:0,
-	    animateOut: 'fadeOut',
-	    animateIn: 'fadeIn',
-	    nav:false,
-	    dots: false,
-	    autoplayHoverPause: false,
-	    items: 1,
-	    navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
-	    responsive:{
-	      0:{
-	        items:1,
-	        nav:false
-	      },
-	      600:{
-	        items:1,
-	        nav:false
-	      },
-	      1000:{
-	        items:1,
-	        nav:false
-	      }
-	    }
-	   });
-	};
-	carousel();
-
-	var fullHeight = function() {
-
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
-
-	};
-	fullHeight();
-
-	var burgerMenu = function() {
-
-		$('.js-colorlib-nav-toggle').on('click', function(event) {
-			event.preventDefault();
-			var $this = $(this);
-			if( $('body').hasClass('menu-show') ) {
-				$('body').removeClass('menu-show');
-				$('#colorlib-main-nav > .js-colorlib-nav-toggle').removeClass('show');
-			} else {
-				$('body').addClass('menu-show');
-				setTimeout(function(){
-					$('#colorlib-main-nav > .js-colorlib-nav-toggle').addClass('show');
-				}, 900);
-			}
-		})
-	};
-	burgerMenu();
-	
-	var counter = function() {
-		
-		$('#section-counter').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-
-				var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
-				$('.number').each(function(){
-					var $this = $(this),
-						num = $this.data('number');
-						console.log(num);
-					$this.animateNumber(
-					  {
-					    number: num,
-					    numberStep: comma_separator_number_step
-					  }, 7000
-					);
-				});
-				
-			}
-
-		} , { offset: '95%' } );
-
-	}
-	counter();
-
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.ftco-animate').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-				
-				i++;
-
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-
-					$('body .ftco-animate.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn ftco-animated');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft ftco-animated');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight ftco-animated');
-							} else {
-								el.addClass('fadeInUp ftco-animated');
-							}
-							el.removeClass('item-animate');
-						},  k * 50, 'easeInOutExpo' );
-					});
-					
-				}, 100);
-				
-			}
-
-		} , { offset: '95%' } );
-	};
-	contentWayPoint();
-
-
-	// magnific popup
-	$('.image-popup').magnificPopup({
-    type: 'image',
-    closeOnContentClick: true,
-    closeBtnInside: false,
-    fixedContentPos: true,
-    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
-     gallery: {
-      enabled: true,
-      navigateByImgClick: true,
-      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-    },
-    image: {
-      verticalFit: true
-    },
-    zoom: {
-      enabled: true,
-      duration: 300 // don't foget to change the duration also in CSS
+/* ── Scroll Reveal ───────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
     }
   });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-    disableOn: 700,
-    type: 'iframe',
-    mainClass: 'mfp-fade',
-    removalDelay: 160,
-    preloader: false,
-
-    fixedContentPos: false
-  });
-
-   
-   $('#appointment_date').datepicker({
-	  'format': 'm/d/yyyy',
-	  'autoclose': true
-	});
-	$('#appointment_time').timepicker();
-
-    // This is the original progress bar function from your file, which works.
-	var pageProgress = function() {
-		$(window).scroll(function() {
-	    var wintop = $(window).scrollTop(), docheight = $('.page').height(), winheight = $(window).height();
-	    var totalScroll = (wintop/(docheight-winheight))*100;
-	    $(".KW_progressBar").css("width",totalScroll+"%");
-	  });
-
-	};
-	pageProgress();
-
-
+document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach(el => {
+  revealObserver.observe(el);
 });
 
-// Hero text fade-in logic. This is correct.
+/* ── Typing Animation ────────────────────────────────────── */
+function startTyping(elementId, phrases, speed = 80, pause = 2200, deleteSpeed = 45) {
+  const el = document.getElementById(elementId);
+  if (!el || !phrases || !phrases.length) return;
+
+  let phraseIndex = 0;
+  let charIndex   = 0;
+  let isDeleting  = false;
+
+  function tick() {
+    const current = phrases[phraseIndex];
+
+    if (isDeleting) {
+      charIndex--;
+      el.textContent = current.slice(0, charIndex);
+    } else {
+      charIndex++;
+      el.textContent = current.slice(0, charIndex);
+    }
+
+    let delay = isDeleting ? deleteSpeed : speed;
+
+    if (!isDeleting && charIndex === current.length) {
+      // Pause at full phrase
+      delay = pause;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 400;
+    }
+
+    setTimeout(tick, delay);
+  }
+
+  // Start after a brief delay
+  setTimeout(tick, 600);
+}
+
+/* ── Publications Filter ─────────────────────────────────── */
+function initPubFilter() {
+  const filterBtns = document.querySelectorAll('.pub-filter-btn');
+  const pubCards   = document.querySelectorAll('.pub-card');
+
+  if (!filterBtns.length || !pubCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      pubCards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const matches = card.dataset.status === filter ||
+                          card.dataset.type   === filter ||
+                          card.dataset.year   === filter;
+          card.classList.toggle('hidden', !matches);
+        }
+      });
+    });
+  });
+}
+
+/* ── Projects Filter ─────────────────────────────────────── */
+function initProjectFilter() {
+  const filterBtns   = document.querySelectorAll('.proj-filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (!filterBtns.length || !projectCards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      projectCards.forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.toggle('hidden', card.dataset.category !== filter);
+        }
+      });
+    });
+  });
+}
+
+/* ── Run on DOM ready ────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-	setTimeout(() => {
-		const helloElement = document.getElementById('hello');
-		if (helloElement) helloElement.style.opacity = 1;
-	  }, 400);
-  
-	setTimeout(() => {
-		const nameElement = document.getElementById('Name');
-		if (nameElement) nameElement.style.opacity = 1;
-	  }, 700);
+  initPubFilter();
+  initProjectFilter();
 
-	setTimeout(() => {
-	  const lineElement = document.getElementById('line');
-	  if (lineElement) lineElement.style.opacity = 1;
-	}, 1000);
-
-	setTimeout(() => {
-		const buttonElement = document.getElementById('button');
-		if (buttonElement) buttonElement.style.opacity = 1;
-	  }, 1300);
+  // Typing effect — only runs if element exists (index.html)
+  if (window.SITE_DATA) {
+    startTyping('typing-text', SITE_DATA.typingRoles);
+  }
 });
