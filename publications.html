@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications — Anirudh Arora</title>
+  <meta name="description" content="Research publications, preprints and articles by Anirudh Arora — climate researcher at KAUST." />
+  <link rel="icon" type="image/png" href="images/fav.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/main.css" />
+
+  <style>
+    .page-hero {
+      padding: 140px 0 60px;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+    }
+    .scholar-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 20px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      margin-bottom: 40px;
+    }
+    .scholar-bar .icon { font-size: 1.8rem; }
+    .scholar-bar p { font-size: 0.9rem; color: var(--text-muted); margin: 0; flex:1; }
+    .scholar-bar a { flex-shrink: 0; }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .filter-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      align-self: center;
+      margin-right: 4px;
+    }
+    .pub-count {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+    .pub-count span { color: var(--accent); font-weight: 700; }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0 24px;
+    }
+    .section-divider h3 {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+      white-space: nowrap;
+    }
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="site-nav" role="navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/anni.jpeg" alt="Anirudh Arora" class="nav-logo-img" />
+      <span class="nav-logo-text">Anirudh Arora</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li class="active"><a href="publications.html">Publications</a></li>
+      <li><a href="talks.html">Talks</a></li>
+      <li><a href="readings.html">Readings</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon">🌙</span></button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="publications.html" class="active">Publications</a>
+  <a href="talks.html">Talks</a>
+  <a href="readings.html">Readings</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="section-label">Research Output</span>
+    <h1 class="section-title">Publications</h1>
+    <div class="divider"></div>
+    <p class="section-subtitle">Journal articles, conference proceedings, and public writing on climate science, atmospheric dynamics, and science policy.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section>
+  <div class="container">
+
+    <!-- Google Scholar bar -->
+    <div class="scholar-bar" data-reveal>
+      <span class="icon">🎓</span>
+      <p>For a complete and up-to-date list of publications, citations, and metrics, visit my Google Scholar profile.</p>
+      <a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-primary">
+        <i class="fa-brands fa-google-scholar"></i> Google Scholar
+      </a>
+    </div>
+
+    <!-- Filters -->
+    <div data-reveal>
+      <div class="filter-row">
+        <span class="filter-label">Status:</span>
+        <button class="pub-filter-btn active" data-filter="all">All</button>
+        <button class="pub-filter-btn" data-filter="published">Published</button>
+        <button class="pub-filter-btn" data-filter="under-review">Under Review</button>
+        <button class="pub-filter-btn" data-filter="in-prep">In Preparation</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Type:</span>
+        <button class="pub-filter-btn" data-filter="journal">Journal</button>
+        <button class="pub-filter-btn" data-filter="article">Article / Op-ed</button>
+      </div>
+    </div>
+
+    <div class="pub-count" id="pub-count">Showing <span id="visible-count">—</span> publications</div>
+
+    <!-- Publication list — populated by JS -->
+    <div class="pub-list" id="pub-list"></div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Anirudh Arora</div>
+        <p>Climate researcher at KAUST studying atmospheric dynamics, solar geoengineering, and monsoon variability.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/anirudharora" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="mailto:anirudh21@iiserb.ac.in" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About & CV</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="talks.html">Talks</a></li>
+          <li><a href="readings.html">Readings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:anirudh21@iiserb.ac.in">anirudh21@iiserb.ac.in</a></li>
+          <li><a href="Anirudh_CV.pdf" download>Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Anirudh Arora</span>
+      <span>Hosted on GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+/* Build full publications list from data.js */
+function buildPubList() {
+  const container = document.getElementById('pub-list');
+  const countEl   = document.getElementById('visible-count');
+  if (!container) return;
+
+  // Group by status for section headers
+  const groups = {
+    published:    { label: 'Published',         items: [] },
+    'under-review': { label: 'Under Review',    items: [] },
+    'in-prep':    { label: 'In Preparation',    items: [] }
+  };
+
+  SITE_DATA.publications.forEach(pub => {
+    if (groups[pub.status]) groups[pub.status].items.push(pub);
+  });
+
+  let html = '';
+  Object.entries(groups).forEach(([status, group]) => {
+    if (!group.items.length) return;
+    html += `<div class="section-divider"><h3>${group.label}</h3></div>`;
+    html += group.items.map(pub => `
+      <div class="pub-card${pub.highlight ? ' highlight' : ''}"
+           data-status="${pub.status}" data-type="${pub.type}" data-year="${pub.year}">
+        <div class="pub-card-body">
+          <div class="pub-authors">${pub.authors.replace('Arora, A.', '<strong>Arora, A.</strong>')}</div>
+          <div class="pub-title">${pub.title}</div>
+          <div class="pub-venue">${pub.venue}${pub.doi ? ` · <a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener" style="color:var(--accent);">DOI</a>` : ''}${pub.date ? ` · ${pub.date}` : ''}</div>
+          <div class="pub-tags" style="margin-top:10px;">
+            <span class="badge-status ${pub.status}">${pub.status.replace('-',' ')}</span>
+            ${pub.tags.map(t => `<span class="badge-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="pub-card-meta">
+          <div class="pub-year">${pub.year}</div>
+          ${pub.url ? `<a href="${pub.url}" target="_blank" rel="noopener" class="btn btn-outline" style="padding:8px 14px;font-size:0.8rem;margin-top:8px;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View
+          </a>` : ''}
+        </div>
+      </div>
+    `).join('');
+  });
+
+  container.innerHTML = html;
+  updateCount();
+}
+
+function updateCount() {
+  const countEl = document.getElementById('visible-count');
+  if (!countEl) return;
+  const visible = document.querySelectorAll('.pub-card:not(.hidden)').length;
+  countEl.textContent = visible;
+}
+
+// Hook count update into filter buttons
+document.addEventListener('DOMContentLoaded', () => {
+  buildPubList();
+  // Patch filter to also update count
+  document.querySelectorAll('.pub-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => setTimeout(updateCount, 10));
+  });
+});
+</script>
+</body>
+</html>

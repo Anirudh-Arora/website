@@ -1,197 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>About | Anirudh Arora</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="images/fav.png" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/eecc9ab967.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/body.css">
-  </head>
-  <body>
-    <div class="KW_progressContainer">
-      <div class="KW_progressBar"></div>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Anirudh Arora</title>
+  <meta name="description" content="About Anirudh Arora — climate researcher at KAUST, IISER Bhopal graduate, Rhodes Scholarship finalist." />
+  <link rel="icon" type="image/png" href="images/fav.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .page-hero { padding:140px 0 60px; background:var(--bg-alt); border-bottom:1px solid var(--border); }
+    .about-page-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 72px;
+    }
+    .about-sidebar-photo {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px var(--shadow-md);
+      position: sticky;
+      top: 90px;
+    }
+    .about-sidebar-info {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .info-row i { color: var(--accent); width: 16px; flex-shrink:0; }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .skill-pill {
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+    .cv-download-box {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 32px 36px;
+      background: linear-gradient(135deg, var(--accent-light), var(--sand-light));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 56px;
+    }
+    .cv-download-box .icon { font-size: 2.5rem; }
+    .cv-download-box h3 { font-family: var(--font-display); font-size:1.2rem; margin-bottom:4px; }
+    .cv-download-box p  { font-size:0.88rem; color:var(--text-muted); margin:0; }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .course-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      font-size: 0.88rem;
+    }
+    .course-card .course-name { font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .course-card .course-org  { color: var(--accent); font-size: 0.82rem; }
+    .course-card .course-year { color: var(--text-light); font-family: var(--font-mono); font-size: 0.75rem; float: right; }
+
+    @media (max-width: 768px) {
+      .about-page-grid { grid-template-columns: 1fr; }
+      .about-sidebar-photo { max-width: 260px; margin: 0 auto; display: block; position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/anni.jpeg" alt="" class="nav-logo-img" />
+      <span class="nav-logo-text">Anirudh Arora</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="talks.html">Talks</a></li>
+      <li><a href="readings.html">Readings</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle"><span id="theme-icon">🌙</span></button>
+      <button class="nav-hamburger" id="nav-hamburger"><span></span><span></span><span></span></button>
     </div>
-    <div class="page">
-		<nav id="colorlib-main-nav" role="navigation">
-			<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
-			<div class="js-fullheight colorlib-table">
-			  <div class="img" style="background-image: url(images/Myanni.png);"></div>
-			  <div class="colorlib-table-cell js-fullheight">
-				<div class="row no-gutters">
-				  <div class="col-md-12 text-center nav3">
-					<h1 class="namennav"><a href="index.html" class="logo">Anirudh Arora</a></h1>
-					<ul>
-					  <li><a href="index.html"><span>Home</span></a></li>
-                      <li class="active"><a href="about.html"><span>About</span></a></li>
-                      <li><a href="projects.html"><span>Projects</span></a></li>
-                      <li><a href="#contact-section"><span>Contact</span></a></li>
-					</ul>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </nav>
-    <div id="colorlib-page">
-        <header class="desktop-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-container">
-                        <a class="colorlib-logo" href="index.html">
-                            <span class="logo-img" style="background-image: url(images/anni.jpeg);"></span>
-                            Anirudh Arora
-                        </a>
-                    </div>
-                    <nav class="desktop-nav">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="about.html">About</a></li>
-                            <li><a href="projects.html">Projects</a></li>
-                            <li><a href="#contact-section">Contact</a></li>
-                        </ul>
-                    </nav>
-                    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle mobile-toggle"><i></i></a>
-                </div>
-            </div>
-        </header>
-        <header class="mobile-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="colorlib-navbar-brand">
-                            <a class="colorlib-logo" href="index.html"><span class="logo-img" style="background-image: url(images/anni.jpeg);"></span>Anirudh Arora</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-      <div class="background-shape shape-1" data-scrollax="properties: { 'translateY': '-20%', 'opacity': 1 }"></div>
-      <div class="background-shape shape-2" data-scrollax="properties: { 'translateY': '-30%', 'opacity': 1 }"></div>
-      <section class="ftco-section about-section">
-        <div class="container">
-          <div class="row d-flex" data-scrollax-parent="true">
-            <div class="col-md-4 author-img" style="background-image: url(images/Myanni.png);"></div>
-            <div class="col-md-2"></div>
-            <div class="col-md-6 wrap ftco-animate">
-              <div class="about-desc">
-                <h1 class="bold-text">About</h1>
-                <div class="p-5">
-                  <h2 class="mb-5">Anirudh Arora</h2>
-                  <p>I am a final-year Environmental Science major at IISER Bhopal and a visiting researcher at KAUST as well as the DST Centre of Excellence in Climate Modeling, IIT Delhi. My work focuses on understanding climate model uncertainty, air pollution dynamics, and sustainable geoengineering interventions.</p>
-                  <p>Through interdisciplinary training, I combine modeling, policy analysis, and field-based ethnography to investigate the climate crisis and help inform just and effective environmental action. I will be joining KAUST in June 2025 for my master's thesis.</p>
-                  <p><a href="path/to/your/CV.pdf" class="cv-button" download>Download Full CV (PDF)</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row d-flex justify-content-end mt-5">
-          	<div class="col-md-10">
-          		<div class="exp ftco-animate">
-          			<h2 class="mb-4">Education</h2>
-          			<div class="exp-wrap py-4">
-          				<div class="desc">
-          					<h4>BS-MS in Environmental Science <span>- IISER Bhopal</span> </h4>
-          					<p class="location">Bhopal, India</p>
-          				</div>
-          				<div class="year">
-          					<p>2021 - 2026 (Expected)</p>
-          				</div>
-          			</div>
-          		</div>
-          		<div class="exp mt-5 ftco-animate">
-          			<h2 class="mb-4">Research Experience</h2>
-          			<div class="exp-wrap py-4">
-          				<div class="desc">
-          					<h4>Visiting Researcher <span>- DST Centre of Excellence in Climate Modeling, IIT Delhi</span></h4>
-          					<p>Currently analyzing GeoMIP G6 SAI simulations using CESM-WACCM to assess how stratospheric aerosols alter the South Asian monsoon, combining model diagnostics with climate policy interpretation.</p>
-          				</div>
-          				<div class="year">
-          					<p>May 2024 - Present</p>
-          				</div>
-          			</div>
-          			<div class="exp-wrap py-4">
-          				<div class="desc">
-          					<h4>Undergraduate Researcher <span>- IISER Bhopal</span></h4>
-          					<p>Worked on multiple projects including evaluation of climate model errors using Monte Carlo simulations, MDP-based climate investment planning, and a socio-technical analysis of scientific knowledge production through lab and field ethnographies.</p>
-          				</div>
-          				<div class="year">
-          					<p>2023 - 2024</p>
-          				</div>
-          			</div>
-                <div class="exp mt-5 ftco-animate">
-                    <h2 class="mb-4">Technical Skills</h2>
-                    <div class="exp-wrap py-4">
-                        <div class="desc">
-                            <h4>Programming & Software</h4>
-                            <p>Python (Xarray, NumPy, Matplotlib, SciPy, Pandas), MATLAB, NCL, Bash, LaTeX, QGIS</p>
-                        </div>
-                    </div>
-                    <div class="exp-wrap py-4">
-                        <div class="desc">
-                            <h4>Climate Data & Models</h4>
-                            <p>CESM-WACCM, CMIP6/GeoMIP, NetCDF, Satellite gravity (GRACE), GPM/IMERG precipitation datasets</p>
-                        </div>
-                    </div>
-                    <div class="exp-wrap py-4">
-                        <div class="desc">
-                            <h4>Methods & Frameworks</h4>
-                            <p>Monte Carlo Simulations, Markov Decision Processes (MDPs), Reinforcement Learning, Climate-Ethnography, Sequential Policy Analysis</p>
-                        </div>
-                    </div>
-                </div>
-          	</div>
-          </div>
-        </div>
-      </section>
-	  <footer id="contact-section" class="site-footer">
-        <div class="container">
-            <div class="footer-content-centered">
-                <h2 class="footer-heading">Contact Me</h2>
-                <p class="footer-email">
-                    <a href="mailto:anirudh21@iiserb.ac.in">anirudh21@iiserb.ac.in</a>
-                </p>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/anirudh-arora" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
-                    <a href="https://bsky.app/profile/anirudh-arora.bsky.social" target="_blank" rel="noopener noreferrer" title="BlueSky"><i class="fa-brands fa-bluesky"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Anirudh Arora</p>
-            </div>
-        </div>
-      </footer>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="about.html" class="active">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="publications.html">Publications</a>
+  <a href="talks.html">Talks</a>
+  <a href="readings.html">Readings</a>
+</div>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <span class="section-label">Who I Am</span>
+    <h1 class="section-title">About Me</h1>
+    <div class="divider"></div>
+    <p class="section-subtitle">Climate researcher, aspiring academic, and lifelong student of the Earth's atmosphere.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+
+    <!-- CV Download -->
+    <div class="cv-download-box" data-reveal>
+      <span class="icon">📄</span>
+      <div style="flex:1;">
+        <h3>Curriculum Vitae</h3>
+        <p>Full academic CV including all publications, presentations, awards, and experience.</p>
+      </div>
+      <a href="Anirudh_CV.pdf" class="btn btn-primary" download>
+        <i class="fa-solid fa-download"></i> Download CV
+      </a>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
-    <script src="js/hero.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+
+    <!-- About grid -->
+    <div class="about-page-grid">
+
+      <!-- Sidebar -->
+      <div data-reveal="left">
+        <img src="images/Myanni.png" alt="Anirudh Arora" class="about-sidebar-photo" loading="lazy" />
+        <div class="about-sidebar-info">
+          <div class="info-row"><i class="fa-solid fa-location-dot"></i> KAUST, Thuwal, Saudi Arabia</div>
+          <div class="info-row"><i class="fa-solid fa-envelope"></i> anirudh21@iiserb.ac.in</div>
+          <div class="info-row"><i class="fa-solid fa-graduation-cap"></i> BS Environmental Sciences</div>
+          <div class="info-row"><i class="fa-solid fa-flask"></i> Atmospheric Science & GeoEng</div>
+        </div>
+        <div style="margin-top:24px; display:flex; flex-direction:column; gap:10px;">
+          <a href="https://www.linkedin.com/in/anirudharora" target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-outline" style="justify-content:center;">
+            <i class="fa-brands fa-google-scholar"></i> Google Scholar
+          </a>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div data-reveal="right">
+        <h2 style="font-family:var(--font-display);font-size:2rem;margin-bottom:20px;">
+          Anirudh Arora
+        </h2>
+
+        <div class="about-transition-banner" style="margin-bottom:28px;">
+          <span class="icon">🌍</span>
+          <span>
+            <strong>Transition:</strong> Final-year BS at IISER Bhopal (CPI 9.15/10) → Visiting Researcher at <strong>KAUST's CLIMATics Group</strong> since July 2025, pursuing master's thesis research under Prof. Ibrahim Hoteit.
+          </span>
+        </div>
+
+        <p style="margin-bottom:16px;">
+          I am a climate researcher with a broad interest in <strong>how the atmosphere responds to natural and forced changes</strong> — from the interannual variability of the Indian monsoon to the large-scale dynamical consequences of stratospheric aerosol injection.
+        </p>
+        <p style="margin-bottom:16px;">
+          My work spans statistical analysis of CMIP5/CMIP6 multi-model ensembles, offline processing of large NetCDF datasets with Python (Xarray, NumPy, Matplotlib), and the development of novel decision-theoretic frameworks for climate policy. I have been fortunate to be supervised by Prof. Saroj Mishra (IIT Delhi) and Prof. Ibrahim Hoteit (KAUST).
+        </p>
+        <p style="margin-bottom:16px;">
+          Beyond the modelling side, I am deeply invested in <strong>science communication and policy</strong>. I have co-hosted a podcast on climate governance, authored commentary for The India Forum, and presented at the GeoMIP 2024 meeting at Cornell University. I was shortlisted as a <strong>Rhodes Scholarship 2026 India finalist</strong> — among the top 13 out of 1,000 applicants.
+        </p>
+        <p style="margin-bottom:32px;">
+          Outside research I lead <em>Prayaas</em>, a volunteer organisation working with underprivileged communities through education, and I was formerly president of IISER Bhopal's Debating Society.
+        </p>
+
+        <!-- Skills -->
+        <h3 style="font-family:var(--font-mono);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--sand);margin-bottom:14px;">Technical Skills</h3>
+        <div class="skills-grid" style="margin-bottom:32px;">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Xarray</span>
+          <span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Matplotlib</span>
+          <span class="skill-pill">NCL</span>
+          <span class="skill-pill">MATLAB</span>
+          <span class="skill-pill">Mathematica</span>
+          <span class="skill-pill">CDO</span>
+          <span class="skill-pill">LaTeX</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">C</span>
+          <span class="skill-pill">HTML/CSS</span>
+          <span class="skill-pill">CMIP6</span>
+          <span class="skill-pill">GeoMIP</span>
+          <span class="skill-pill">NetCDF</span>
+        </div>
+
+      </div>
+
+    </div><!-- /about-page-grid -->
+
+  </div>
+</section>
+
+<!-- Education & Experience Timeline -->
+<section class="section-alt">
+  <div class="container">
+    <div style="max-width:560px; margin-bottom:52px;" data-reveal>
+      <span class="section-label">Background</span>
+      <h2 class="section-title">Education &amp; Research Experience</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px;" id="about-timeline-grid">
+
+      <div data-reveal="left">
+        <h3 style="font-size:1rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--sand);margin-bottom:36px;">Education</h3>
+        <div class="timeline" id="about-edu-timeline"></div>
+      </div>
+
+      <div data-reveal="right">
+        <h3 style="font-size:1rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--sand);margin-bottom:36px;">Research Experience</h3>
+        <div class="timeline" id="about-exp-timeline"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Awards -->
+<section id="awards">
+  <div class="container">
+    <div style="max-width:560px; margin-bottom:52px;" data-reveal>
+      <span class="section-label">Recognition</span>
+      <h2 class="section-title">Honours &amp; Awards</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="awards-grid" id="all-awards-grid"></div>
+  </div>
+</section>
+
+<!-- External Courses -->
+<section class="section-alt">
+  <div class="container">
+    <div style="max-width:560px; margin-bottom:40px;" data-reveal>
+      <span class="section-label">Continued Learning</span>
+      <h2 class="section-title">External Coursework</h2>
+    </div>
+    <div class="courses-grid" data-reveal-stagger>
+      <div class="course-card">
+        <span class="course-year">2023</span>
+        <div class="course-name">Global Warming II: Create Your Own Models in Python</div>
+        <div class="course-org">The University of Chicago</div>
+      </div>
+      <div class="course-card">
+        <span class="course-year">2021</span>
+        <div class="course-name">Greening the Economy: Sustainable Cities</div>
+        <div class="course-org">Lund University · Coursera</div>
+      </div>
+      <div class="course-card">
+        <span class="course-year">2021</span>
+        <div class="course-name">Sustainable Development Goals – A Global Vision</div>
+        <div class="course-org">University of Copenhagen · Coursera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Anirudh Arora</div>
+        <p>Climate researcher at KAUST studying atmospheric dynamics, solar geoengineering, and monsoon variability.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/anirudharora" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener" class="social-link"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="mailto:anirudh21@iiserb.ac.in" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About & CV</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="talks.html">Talks</a></li>
+          <li><a href="readings.html">Readings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:anirudh21@iiserb.ac.in">anirudh21@iiserb.ac.in</a></li>
+          <li><a href="Anirudh_CV.pdf" download>Download CV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Anirudh Arora</span>
+      <span>Hosted on GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+function buildTimeline(items, containerId, type) {
+  const container = document.getElementById(containerId);
+  if (!container || !items) return;
+  container.innerHTML = items.map((item, i) => {
+    if (type === 'edu') {
+      return `
+        <div class="timeline-item">
+          <div class="timeline-dot${i===0?'':' sand'}"></div>
+          <div class="timeline-period">${item.period}</div>
+          <div class="timeline-title">${item.degree}${item.badge?`<span class="timeline-badge">${item.badge}</span>`:''}</div>
+          <div class="timeline-org">${item.institution} · ${item.location}</div>
+          <div class="timeline-detail">${item.details}</div>
+        </div>`;
+    } else {
+      return `
+        <div class="timeline-item">
+          <div class="timeline-dot${i===0?'':' sand'}"></div>
+          <div class="timeline-period">${item.period}</div>
+          <div class="timeline-title">${item.role}</div>
+          <div class="timeline-org">${item.org} · ${item.location}</div>
+          <div class="timeline-detail">Supervised by ${item.supervisor}</div>
+          <ul style="margin-top:8px;padding-left:18px;">
+            ${item.bullets.map(b=>`<li style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">${b}</li>`).join('')}
+          </ul>
+        </div>`;
+    }
+  }).join('');
+}
+
+function buildAllAwards() {
+  const container = document.getElementById('all-awards-grid');
+  if (!container || !SITE_DATA.awards) return;
+  container.innerHTML = SITE_DATA.awards.map(award => `
+    <div class="award-card" data-reveal>
+      <div class="award-year">${award.year}</div>
+      <div>
+        <div class="award-title">${award.title}</div>
+        <div class="award-org">${award.org}</div>
+        <div class="award-desc">${award.desc}</div>
+      </div>
+    </div>`).join('');
+}
+
+function checkGrid() {
+  const g = document.getElementById('about-timeline-grid');
+  if (!g) return;
+  g.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 1fr';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildTimeline(SITE_DATA.education,  'about-edu-timeline', 'edu');
+  buildTimeline(SITE_DATA.experience, 'about-exp-timeline', 'exp');
+  buildAllAwards();
+  checkGrid();
+  window.addEventListener('resize', checkGrid);
+});
+</script>
+</body>
 </html>

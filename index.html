@@ -1,206 +1,656 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Anirudh Arora</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <script src="https://kit.fontawesome.com/eecc9ab967.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/png" href="images/fav.png" />
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700" rel="stylesheet">
-   
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/body.css">
-  </head>
-  <body>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anirudh Arora — Climate Researcher</title>
+  <meta name="description" content="Anirudh Arora is a climate researcher and MS student at KAUST, specialising in atmospheric sciences, solar geoengineering, and the Indian summer monsoon." />
 
-    <div class="KW_progressContainer">
-      <div class="KW_progressBar"></div>
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Anirudh Arora — Climate Researcher" />
+  <meta property="og:description" content="Climate researcher at KAUST studying solar geoengineering, monsoon dynamics, and global climate models." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:image"       content="images/anni.jpeg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/fav.png" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <style>
+    /* ── Index-specific: Hero portrait column ────────────── */
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      align-items: center;
+      min-height: 100vh;
+      padding-top: 68px;
+    }
+    .hero-portrait {
+      position: relative;
+    }
+    .hero-portrait-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+    }
+    .hero-portrait-ring {
+      position: absolute;
+      inset: -12px;
+      border-radius: 28px;
+      border: 2px dashed var(--sand);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hero-portrait-tag {
+      position: absolute;
+      bottom: 28px;
+      left: -24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: 0 12px 40px var(--shadow-md);
+      min-width: 180px;
+    }
+    .hero-portrait-tag .label-top {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .hero-portrait-tag .label-main {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .hero-portrait-tag .dot-pulse {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-right: 6px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+    }
+
+    @media (max-width: 960px) {
+      .hero .container {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+        padding-bottom: 60px;
+        min-height: unset;
+      }
+      .hero-portrait { display: none; }
+    }
+
+    /* ── Section alternating backgrounds ─────────────────── */
+    .section-alt { background: var(--bg-alt); }
+
+    /* ── Stats row ────────────────────────────────────────── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 20px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--sand);
+      box-shadow: 0 12px 40px var(--shadow);
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+    @media (max-width: 640px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ── Scroll Progress Bar ──────────────────────────────── -->
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ════════════════════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════════════════════ -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo" aria-label="Anirudh Arora — Home">
+      <img src="images/anni.jpeg" alt="Anirudh Arora" class="nav-logo-img" />
+      <span class="nav-logo-text">Anirudh Arora</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links" role="list">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="talks.html">Talks</a></li>
+      <li><a href="readings.html">Readings</a></li>
+    </ul>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <div class="page">
-      <nav id="colorlib-main-nav" role="navigation">
-        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
-        <div class="js-fullheight colorlib-table">
-          <div class="img" style="background-image: url(images/Myanni.png);"></div>
-          <div class="colorlib-table-cell js-fullheight">
-            <div class="row no-gutters">
-              <div class="col-md-12 text-center nav3">
-                <h1 class="namennav"><a href="index.html" class="logo">Anirudh Arora</a></h1>
-                <ul>
-                  <li class="active"><a href="index.html"><span>Home</span></a></li>
-                  <li><a href="about.html"><span>About</span></a></li>
-                  <li><a href="blog.html"><span>Projects</span></a></li>
-                  <li><a href="readings.html"><span>Readings</span></a></li>
-                  <li><a href="#contact-section"><span>Contact</span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-  
-      <div id="colorlib-page">
-        <header class="desktop-header">
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo-container">
-                        <a class="colorlib-logo" href="index.html">
-                            <span class="logo-img" style="background-image: url(images/anni.jpeg);"></span>
-                            Anirudh Arora
-                        </a>
-                    </div>
-                    <nav class="desktop-nav">
-                        <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="projects.html">Projects</a></li>
-                          <li><a href="readings.html"><span>Readings</span></a></li>
-                            <li><a href="#contact-section">Contact</a></li>
-                        </ul>
-                    </nav>
-                    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle mobile-toggle"><i></i></a>
-                </div>
-            </div>
-        </header>
+  </div>
+</nav>
 
-        <header class="mobile-header">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="colorlib-navbar-brand">
-                  <a class="colorlib-logo" href="index.html"><span class="logo-img" style="background-image: url(images/anni.jpeg);"></span>Anirudh Arora</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-  
-        <section class="hero">
-          <div id="particles-js"></div>
-          <div class="hero-overlay"></div>
-          <div class="hero-content">
-            <p class="hero-subtitle" id="hello">Hello, I'm</p>
-            <h1 class="hero-title"id="Name">Anirudh Arora</h1>
-            <div class="ab hero-subtitle" id="line">Climate Researcher & Environmental Science Student</div>
-          </div>
-        </section>
-        
-        <!-- The parallax shapes are now placed here, outside the sections -->
-        <div class="background-shape shape-1" data-scrollax="properties: { 'translateY': '-20%', 'opacity': 1 }"></div>
-        <div class="background-shape shape-2" data-scrollax="properties: { 'translateY': '-30%', 'opacity': 1 }"></div>
-        
-        <section class="ftco-section about-section">
-            <div class="container">
-              <div class="row d-flex" data-scrollax-parent="true">
-                <div class="col-md-4 author-img" style="background-image: url(images/Myanni.png);"></div>
-                <div class="col-md-2"></div>
-                <div class="col-md-6 wrap ftco-animate">
-                  <div class="about-desc">
-                    <h1 class="bold-text">About</h1>
-                    <div class="p-5">
-                      <h1 class="mb-5">Overview</h1>
-                      <p>I am a final-year Environmental Science major at IISER Bhopal and a visiting researcher at the DST Centre of Excellence in Climate Modeling, IIT Delhi. My research focuses on atmospheric sciences, general circulation models, and the socio-political dimensions of climate action.</p>
-                      <p>I'm particularly interested in climate dynamics, solar geoengineering,and  Indian summer monsoon. I will be joining KAUST in July 2025 for my master's thesis.</p>
-                      <a href="about.html" class="cv-button"> <h5 class="cv-button">Resume</h5></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </section>
+<!-- Mobile Menu -->
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Mobile navigation">
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About</a>
+  <a href="projects.html">Projects</a>
+  <a href="publications.html">Publications</a>
+  <a href="talks.html">Talks</a>
+  <a href="readings.html">Readings</a>
+  <div style="margin-top:24px; padding-top:24px; border-top:1px solid var(--border);">
+    <a href="Anirudh_CV.pdf" class="btn btn-primary" download>
+      <i class="fa-solid fa-download"></i> Download CV
+    </a>
+  </div>
+</div>
 
-        <section class="ftco-section" id="research-focus">
-            <div class="container">
-              <div class="row justify-content-center mb-5 pb-5 pt-5">
-                <div class="col-md-7 text-center heading-section ftco-animate">
-                  <h2>Research Interests</h2>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                  <div class="media block-6 services p-3 py-4 d-block text-center">
-                    <div class="icon mb-3"><span class="icon-globe"></span></div>
-                    <div class="media-body">
-                      <h3 class="heading">Climate Model Evaluation & Solar Geoengineering</h3>
-                      <p>Analyzing the performance and uncertainty of global climate models (GCMs), including GeoMIP simulations.</p>
-                    </div>
-                  </div>      
-                </div>
-                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                  <div class="media block-6 services p-4 d-block text-center">
-                    <div class="icon mb-3"><span class="fa-solid fa-cloud-sun-rain"></span></div> 
-                    <div class="media-body">
-                      <h3 class="heading">Indian Summer Monsoon Dynamics</h3>
-                      <p>Exploring the variability and drivers of the Indian summer monsoon.</p>
-                    </div>
-                  </div>      
-                </div>
-                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                  <div class="media block-6 services p-4 d-block text-center">
-                    <div class="icon mb-3"><span class="fa-solid fa-people-group"></span></div>
-                    <div class="media-body">
-                      <h3 class="heading">Anthropology</h3>
-                      <p>Investigating the cultural, ethical, and institutional dimensions of knowledge production.</p>
-                    </div>
-                  </div>    
-                </div>
-              </div>
-            </div>
-        </section>
+<!-- ════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════ -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-1" aria-hidden="true"></div>
+  <div class="hero-shape hero-shape-2" aria-hidden="true"></div>
+
+  <div class="container">
+
+    <!-- Left: Content -->
+    <div class="hero-content">
+
+      <p class="hero-greeting" aria-hidden="true">Hello, I'm</p>
+
+      <h1 class="hero-name">Anirudh<br/>Arora</h1>
+
+      <p class="hero-role-line" aria-live="polite">
+        <span id="typing-text"></span><span class="typing-cursor" aria-hidden="true"></span>
+      </p>
+
+      <p class="hero-tagline">
+        Studying how Earth's atmosphere responds to a changing climate — from Indian summer monsoon dynamics to stratospheric aerosol injection and the credibility of global climate models.
+      </p>
+
+      <div class="hero-cta">
+        <a href="projects.html" class="btn btn-primary">
+          <i class="fa-solid fa-flask"></i> View Research
+        </a>
+        <a href="publications.html" class="btn btn-outline">
+          <i class="fa-solid fa-book-open"></i> Publications
+        </a>
+        <a href="Anirudh_CV.pdf" class="btn btn-sand" download>
+          <i class="fa-solid fa-download"></i> CV
+        </a>
       </div>
 
-      <footer id="contact-section" class="site-footer">
-        <div class="container">
-            <div class="footer-content-centered">
-                <h2 class="footer-heading">Contact Me</h2>
-                <p class="footer-email">
-                    <a href="mailto:anirudh21@iiserb.ac.in">anirudh21@iiserb.ac.in</a>
-                </p>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/anirudh-arora" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" title="BlueSky"><i class="fa-brands fa-bluesky"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Anirudh Arora</p>
-            </div>
+      <!-- Affiliations -->
+      <div class="hero-affiliations" aria-label="Current affiliations">
+        <div class="affiliation-chip">
+          <span class="dot"></span>
+          KAUST · CLIMATics Group
         </div>
-      </footer>
+        <div class="affiliation-chip">
+          <span class="dot sand"></span>
+          IIT Delhi · DST CoE
+        </div>
+        <div class="affiliation-chip" style="border-color: var(--terra-light);">
+          <span style="font-size:0.9rem;">🏆</span>
+          Rhodes Scholar Finalist '26
+        </div>
+      </div>
+
+    </div><!-- /hero-content -->
+
+    <!-- Right: Portrait -->
+    <div class="hero-portrait" aria-hidden="true">
+      <div class="hero-portrait-ring"></div>
+      <img src="images/Myanni.png" alt="Anirudh Arora" class="hero-portrait-img" loading="eager" />
+      <div class="hero-portrait-tag">
+        <div class="label-top">Current status</div>
+        <div class="label-main">
+          <span class="dot-pulse"></span>
+          Researching @ KAUST
+        </div>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
-    <script src="js/hero.js"></script>
+  </div>
+</section><!-- /hero -->
 
-    <script src="js/main.js"></script>
+<!-- ════════════════════════════════════════════════════════
+     ABOUT SNAPSHOT
+     ════════════════════════════════════════════════════════ -->
+<section class="about-section section-alt" id="about">
+  <div class="container">
 
-  </body>
+    <!-- Stats row -->
+    <div class="stats-row" data-reveal-stagger>
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Publications &amp; Preprints</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2</div>
+        <div class="stat-label">Research Institutions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">9.15</div>
+        <div class="stat-label">GPA (out of 10)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Honours &amp; Awards</div>
+      </div>
+    </div>
+
+    <div class="about-grid">
+
+      <!-- Photo -->
+      <div class="about-photo-wrap" data-reveal="left">
+        <img src="images/Myanni.png" alt="Anirudh Arora" class="about-photo" loading="lazy" />
+        <div class="about-photo-badge">
+          <div class="number">9.15</div>
+          <div class="label">GPA / 10</div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="about-text" data-reveal="right">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Climate Scientist<br/><em style="font-weight:400;">in the making</em></h2>
+        <div class="divider"></div>
+
+        <!-- Transition banner -->
+        <div class="about-transition-banner">
+          <span class="icon">🌍</span>
+          <span>
+            <strong>IISER Bhopal → KAUST, Saudi Arabia</strong><br/>
+            Final-year BS at IISER Bhopal · Now a visiting researcher at <strong>KAUST's CLIMATics Group</strong>, co-supervised by Prof. Ibrahim Hoteit for my master's thesis.
+          </span>
+        </div>
+
+        <h3>Research Focus</h3>
+        <p>
+          My work sits at the intersection of <strong>atmospheric dynamics</strong>, <strong>solar geoengineering</strong>, and <strong>climate model evaluation</strong>. I work with large CMIP5/CMIP6 multi-model ensembles, GeoMIP simulations, and reanalysis datasets to understand how the climate system responds — and how well our models capture it.
+        </p>
+        <p>
+          I am particularly drawn to questions about the <strong>Indian summer monsoon</strong>, <strong>stratospheric aerosol injection</strong>, and the credibility of global climate models over the Global South — a region critically underrepresented in the literature.
+        </p>
+        <p>
+          Beyond modelling, I think deeply about the <strong>socio-political dimensions</strong> of climate action: how scientific evidence translates into governance, and what philosophical frameworks can guide equitable climate policy.
+        </p>
+
+        <div class="about-links">
+          <a href="about.html" class="btn btn-primary">
+            <i class="fa-solid fa-user"></i> Full Bio & CV
+          </a>
+          <a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener" class="btn btn-outline">
+            <i class="fa-brands fa-google-scholar"></i> Google Scholar
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     RESEARCH INTERESTS
+     ════════════════════════════════════════════════════════ -->
+<section id="research-interests">
+  <div class="container">
+    <div style="max-width:560px; margin-bottom:52px;" data-reveal>
+      <span class="section-label">What I Study</span>
+      <h2 class="section-title">Research Interests</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="interests-grid" data-reveal-stagger>
+
+      <div class="interest-card">
+        <span class="interest-icon">🌐</span>
+        <h3>Climate Model Evaluation</h3>
+        <p>Assessing the performance and credibility of GCMs — especially CMIP5/CMIP6 ensembles — over South Asia and the Global South, where model uncertainty is greatest.</p>
+      </div>
+
+      <div class="interest-card">
+        <span class="interest-icon">☁️</span>
+        <h3>Solar Geoengineering</h3>
+        <p>Investigating the atmospheric and regional climate consequences of stratospheric aerosol injection (SAI) using GeoMIP G1 and G6sulfur simulations.</p>
+      </div>
+
+      <div class="interest-card">
+        <span class="interest-icon">🌧️</span>
+        <h3>Indian Summer Monsoon</h3>
+        <p>Understanding the dynamics, variability, and future projections of the Indian monsoon — and how geoengineering interventions alter its character.</p>
+      </div>
+
+      <div class="interest-card">
+        <span class="interest-icon">🏭</span>
+        <h3>Atmospheric Aerosols &amp; Air Quality</h3>
+        <p>Multi-scale analysis of natural and anthropogenic aerosol sources over the Indo-Gangetic Plain and their interactions with cloud microphysics and radiative forcing.</p>
+      </div>
+
+      <div class="interest-card">
+        <span class="interest-icon">📜</span>
+        <h3>Climate Policy &amp; Decision Theory</h3>
+        <p>Developing principled frameworks for sequential climate decision-making using Markov Decision Processes, and examining the ethics of geoengineering governance.</p>
+      </div>
+
+      <div class="interest-card">
+        <span class="interest-icon">🧭</span>
+        <h3>Science, Society &amp; Philosophy</h3>
+        <p>Exploring the socio-political dimensions of climate action — from transboundary carbon migration to Kantian frameworks for public enlightenment and climate ethics.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     EDUCATION & EXPERIENCE TIMELINE
+     ════════════════════════════════════════════════════════ -->
+<section class="section-alt" id="timeline">
+  <div class="container">
+    <div style="max-width:560px; margin-bottom:52px;" data-reveal>
+      <span class="section-label">Background</span>
+      <h2 class="section-title">Education &amp; Experience</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px;" id="timeline-grid">
+
+      <!-- Education Column -->
+      <div data-reveal="left">
+        <h3 style="font-size:1rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.12em; color:var(--sand); margin-bottom:36px;">Education</h3>
+        <div class="timeline" id="edu-timeline">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Experience Column -->
+      <div data-reveal="right">
+        <h3 style="font-size:1rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.12em; color:var(--sand); margin-bottom:36px;">Research Experience</h3>
+        <div class="timeline" id="exp-timeline">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FEATURED PUBLICATIONS
+     ════════════════════════════════════════════════════════ -->
+<section id="featured-pubs">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:40px;" data-reveal>
+      <div>
+        <span class="section-label">Research Output</span>
+        <h2 class="section-title">Featured Publications</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="publications.html" class="btn btn-outline">
+        All Publications <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div class="pub-list" id="featured-pub-list">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     AWARDS SNAPSHOT
+     ════════════════════════════════════════════════════════ -->
+<section class="section-alt" id="awards">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:40px;" data-reveal>
+      <div>
+        <span class="section-label">Recognition</span>
+        <h2 class="section-title">Honours &amp; Awards</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="about.html#awards" class="btn btn-outline">All Awards <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div class="awards-grid" id="awards-grid">
+      <!-- Populated by JS (top 4 only) -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════ -->
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-inner">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-name">Anirudh Arora</div>
+        <p>Climate researcher studying atmospheric dynamics, solar geoengineering, and the Indian monsoon. Based at KAUST, Saudi Arabia.</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/anirudharora" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener" class="social-link" aria-label="Google Scholar">
+            <i class="fa-brands fa-google-scholar"></i>
+          </a>
+          <a href="mailto:anirudh21@iiserb.ac.in" class="social-link" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <!-- Add BlueSky / ORCID below when you have the URLs -->
+          <!-- <a href="YOUR_BLUESKY_URL" target="_blank" rel="noopener" class="social-link" aria-label="BlueSky">
+            <i class="fa-brands fa-bluesky"></i>
+          </a> -->
+        </div>
+      </div>
+
+      <!-- Navigation col -->
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About &amp; CV</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="talks.html">Talks</a></li>
+          <li><a href="readings.html">Readings</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact col -->
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="mailto:anirudh21@iiserb.ac.in">anirudh21@iiserb.ac.in</a></li>
+          <li><a href="https://scholar.google.com/citations?user=kYFyXtcAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="Anirudh_CV.pdf" download>Download CV</a></li>
+          <li><a href="https://www.linkedin.com/in/anirudharora" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /footer-inner -->
+
+    <div class="footer-bottom">
+      <span>© 2025 Anirudh Arora · Climate Researcher</span>
+      <span>Built with care · Hosted on GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════
+     SCRIPTS
+     ════════════════════════════════════════════════════════ -->
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+/* ── Populate Timeline from data.js ─────────────────────── */
+function buildTimeline(items, containerId, type) {
+  const container = document.getElementById(containerId);
+  if (!container || !items) return;
+
+  container.innerHTML = items.map((item, i) => {
+    if (type === 'edu') {
+      return `
+        <div class="timeline-item">
+          <div class="timeline-dot${i === 0 ? '' : ' sand'}"></div>
+          <div class="timeline-period">${item.period}</div>
+          <div class="timeline-title">
+            ${item.degree}
+            ${item.badge ? `<span class="timeline-badge">${item.badge}</span>` : ''}
+          </div>
+          <div class="timeline-org">${item.institution}</div>
+          <div class="timeline-detail">${item.details}</div>
+        </div>`;
+    } else {
+      return `
+        <div class="timeline-item">
+          <div class="timeline-dot${i === 0 ? '' : ' sand'}"></div>
+          <div class="timeline-period">${item.period}</div>
+          <div class="timeline-title">${item.role}</div>
+          <div class="timeline-org">${item.org} · ${item.location}</div>
+          <div class="timeline-detail">Supervised by ${item.supervisor}</div>
+        </div>`;
+    }
+  }).join('');
+}
+
+/* ── Populate Featured Publications ──────────────────────── */
+function buildFeaturedPubs() {
+  const container = document.getElementById('featured-pub-list');
+  if (!container || !SITE_DATA.publications) return;
+
+  // Show published + highlight items (up to 3)
+  const featured = SITE_DATA.publications
+    .filter(p => p.status === 'published' || p.highlight)
+    .slice(0, 3);
+
+  container.innerHTML = featured.map(pub => `
+    <div class="pub-card${pub.highlight ? ' highlight' : ''}"
+         data-status="${pub.status}" data-type="${pub.type}" data-year="${pub.year}">
+      <div class="pub-card-body">
+        <div class="pub-authors">${pub.authors.replace('Arora, A.', '<strong>Arora, A.</strong>')}</div>
+        <div class="pub-title">${pub.title}</div>
+        <div class="pub-venue">${pub.venue}${pub.doi ? ` · DOI: ${pub.doi}` : ''}</div>
+        <div class="pub-tags">
+          <span class="badge-status ${pub.status}">${pub.status.replace('-', ' ')}</span>
+          ${pub.tags.map(t => `<span class="badge-tag">${t}</span>`).join('')}
+        </div>
+      </div>
+      <div class="pub-card-meta">
+        <div class="pub-year">${pub.year}</div>
+        ${pub.url ? `<a href="${pub.url}" target="_blank" rel="noopener" class="btn btn-outline" style="padding:8px 14px; font-size:0.8rem;">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> View
+        </a>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ── Populate Top Awards ─────────────────────────────────── */
+function buildAwards() {
+  const container = document.getElementById('awards-grid');
+  if (!container || !SITE_DATA.awards) return;
+
+  const top4 = SITE_DATA.awards.slice(0, 4);
+  container.innerHTML = top4.map(award => `
+    <div class="award-card" data-reveal>
+      <div class="award-year">${award.year}</div>
+      <div>
+        <div class="award-title">${award.title}</div>
+        <div class="award-org">${award.org}</div>
+        <div class="award-desc">${award.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* Responsive timeline grid */
+function checkTimelineGrid() {
+  const grid = document.getElementById('timeline-grid');
+  if (!grid) return;
+  if (window.innerWidth < 768) {
+    grid.style.gridTemplateColumns = '1fr';
+  } else {
+    grid.style.gridTemplateColumns = '1fr 1fr';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildTimeline(SITE_DATA.education,  'edu-timeline', 'edu');
+  buildTimeline(SITE_DATA.experience, 'exp-timeline', 'exp');
+  buildFeaturedPubs();
+  buildAwards();
+  checkTimelineGrid();
+  window.addEventListener('resize', checkTimelineGrid);
+
+  // Re-run reveal observer after dynamic content is inserted
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    if (!el.classList.contains('revealed')) {
+      revealObserver && revealObserver.observe(el);
+    }
+  });
+});
+</script>
+
+</body>
 </html>
